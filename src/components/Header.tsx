@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,12 +22,14 @@ const Header = () => {
       href: '#solutions',
       hasDropdown: true,
       dropdownItems: [
-        'Application & Process Integration',
-        'API Management',
-        'Data Engineering',
-        'AI/MLOps',
-        'Cloud Solutions',
-        'DevOps & SRE'
+        { name: 'Application & Process Integration', href: '/services/application-integration' },
+        { name: 'API Management & Microservices', href: '/services/api-management' },
+        { name: 'Data Engineering & Science', href: '/services/data-engineering' },
+        { name: 'AI/MLOps & Machine Learning', href: '/services/ai-mlops' },
+        { name: 'Cloud Solutions & Infrastructure', href: '/services/cloud-solutions' },
+        { name: 'DevOps & SRE', href: '/services/devops-sre' },
+        { name: 'Enterprise Solutions', href: '/services/enterprise-solutions' },
+        { name: 'Web & Mobile Development', href: '/services/web-mobile-dev' }
       ]
     },
     { 
@@ -33,10 +37,10 @@ const Header = () => {
       href: '#industries',
       hasDropdown: true,
       dropdownItems: [
-        'Company Overview',
-        'Global Locations',
-        'Awards & Recognition',
-        'Client Success Stories'
+        { name: 'Company Overview', href: '#industries' },
+        { name: 'Global Locations', href: '#testimonials' },
+        { name: 'Awards & Recognition', href: '#testimonials' },
+        { name: 'Client Success Stories', href: '#case-studies' }
       ]
     },
     { 
@@ -44,22 +48,37 @@ const Header = () => {
       href: '#insights',
       hasDropdown: true,
       dropdownItems: [
-        'Case Studies',
-        'White Papers',
-        'Webinars',
-        'Technology Blogs'
+        { name: 'Case Studies', href: '#case-studies' },
+        { name: 'White Papers', href: '#insights' },
+        { name: 'Webinars', href: '#insights' },
+        { name: 'Technology Blogs', href: '#insights' }
       ]
     },
     { name: 'Careers', href: '#careers' }
   ];
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (href.startsWith('#')) {
+      if (location.pathname !== '/') {
+        window.location.href = '/' + href;
+      } else {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
     }
     setIsMenuOpen(false);
     setActiveDropdown(null);
+  };
+
+  const handleNavigation = (href: string) => {
+    if (href.startsWith('/')) {
+      // This will be handled by React Router
+      return;
+    } else {
+      scrollToSection(href);
+    }
   };
 
   return (
@@ -73,15 +92,19 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center space-x-3">
             <div className="relative">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-xl">O</span>
-              </div>
-              <div className="absolute -inset-1 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl blur opacity-30 animate-pulse" />
+              <Link to="/">
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                  <span className="text-white font-bold text-xl">O</span>
+                </div>
+                <div className="absolute -inset-1 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl blur opacity-30 animate-pulse" />
+              </Link>
             </div>
             <div>
-              <h1 className="text-xl font-bold text-white">
-                OptiValueTek
-              </h1>
+              <Link to="/">
+                <h1 className="text-xl font-bold text-white">
+                  OptiValueTek
+                </h1>
+              </Link>
               <p className="text-xs text-blue-400 leading-tight">
                 Digital Transformation & Enterprise Modernization
               </p>
@@ -98,7 +121,7 @@ const Header = () => {
                 onMouseLeave={() => setActiveDropdown(null)}
               >
                 <button
-                  onClick={() => scrollToSection(item.href)}
+                  onClick={() => handleNavigation(item.href)}
                   className={`flex items-center gap-1 text-gray-300 hover:text-white transition-colors duration-200 font-medium text-sm py-2 ${
                     item.name === 'What we do' ? 'text-orange-400' : ''
                   }`}
@@ -118,13 +141,27 @@ const Header = () => {
                 {item.hasDropdown && activeDropdown === item.name && (
                   <div className="absolute top-full left-0 mt-2 w-64 bg-gray-800/95 backdrop-blur-md border border-gray-700/50 rounded-xl shadow-2xl py-2 animate-in slide-in-from-top-2 duration-200">
                     {item.dropdownItems?.map((dropdownItem, index) => (
-                      <button
-                        key={index}
-                        className="block w-full text-left px-4 py-2 text-gray-300 hover:text-white hover:bg-gray-700/50 transition-colors duration-200 text-sm"
-                        onClick={() => scrollToSection(item.href)}
-                      >
-                        {dropdownItem}
-                      </button>
+                      dropdownItem.href?.startsWith('/') ? (
+                        <Link
+                          key={index}
+                          to={dropdownItem.href}
+                          className="block w-full text-left px-4 py-2 text-gray-300 hover:text-white hover:bg-gray-700/50 transition-colors duration-200 text-sm"
+                          onClick={() => {
+                            setIsMenuOpen(false);
+                            setActiveDropdown(null);
+                          }}
+                        >
+                          {dropdownItem.name}
+                        </Link>
+                      ) : (
+                        <button
+                          key={index}
+                          className="block w-full text-left px-4 py-2 text-gray-300 hover:text-white hover:bg-gray-700/50 transition-colors duration-200 text-sm"
+                          onClick={() => scrollToSection(dropdownItem.href)}
+                        >
+                          {dropdownItem.name}
+                        </button>
+                      )
                     ))}
                   </div>
                 )}
@@ -153,13 +190,38 @@ const Header = () => {
           <div className="lg:hidden mt-4 pb-4 border-t border-gray-700/50">
             <div className="flex flex-col space-y-4 pt-4">
               {navItems.map((item) => (
-                <button
-                  key={item.name}
-                  onClick={() => scrollToSection(item.href)}
-                  className="text-gray-300 hover:text-white transition-colors duration-200 font-medium text-left text-sm"
-                >
-                  {item.name}
-                </button>
+                <div key={item.name}>
+                  <button
+                    onClick={() => handleNavigation(item.href)}
+                    className="text-gray-300 hover:text-white transition-colors duration-200 font-medium text-left text-sm w-full"
+                  >
+                    {item.name}
+                  </button>
+                  {item.hasDropdown && (
+                    <div className="ml-4 mt-2 space-y-2">
+                      {item.dropdownItems?.map((dropdownItem, index) => (
+                        dropdownItem.href?.startsWith('/') ? (
+                          <Link
+                            key={index}
+                            to={dropdownItem.href}
+                            className="block text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            {dropdownItem.name}
+                          </Link>
+                        ) : (
+                          <button
+                            key={index}
+                            className="block text-gray-400 hover:text-white transition-colors duration-200 text-sm text-left"
+                            onClick={() => scrollToSection(dropdownItem.href)}
+                          >
+                            {dropdownItem.name}
+                          </button>
+                        )
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
               <button
                 onClick={() => scrollToSection('#contact')}

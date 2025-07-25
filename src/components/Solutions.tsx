@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Database, Globe, Cloud, Settings, Brain, Smartphone, Cog, Shield, GitBranch, Server, ArrowRight } from 'lucide-react';
 
 const Solutions = () => {
@@ -10,56 +11,64 @@ const Solutions = () => {
       icon: Cog,
       description: "SOA, Microservices, Apache Camel, Red Hat Fuse/PAM, Camunda, Oracle AIA, webMethods, Tibco, Mulesoft integration solutions.",
       technologies: ["Apache Camel", "Red Hat Fuse", "webMethods", "Mulesoft"],
-      gradient: "from-blue-500 to-cyan-500"
+      gradient: "from-blue-500 to-cyan-500",
+      href: "/services/application-integration"
     },
     {
       title: "API Management & Microservices",
       icon: Globe,
       description: "APIGEE, Red Hat 3Scale, webMethods API gateways with OpenAPI implementation and developer portals.",
       technologies: ["APIGEE", "Red Hat 3Scale", "OpenAPI", "Microservices"],
-      gradient: "from-purple-500 to-pink-500"
+      gradient: "from-purple-500 to-pink-500",
+      href: "/services/api-management"
     },
     {
       title: "Data Engineering & Science",
       icon: Database,
       description: "Big Data, Data Science, Python, AI/ML, Snowflake, data lakes, and master data platform setup.",
       technologies: ["Python", "Snowflake", "Data Lakes", "Big Data"],
-      gradient: "from-green-500 to-teal-500"
+      gradient: "from-green-500 to-teal-500",
+      href: "/services/data-engineering"
     },
     {
       title: "AI/MLOps & Machine Learning",
       icon: Brain,
       description: "AI solutions for business use cases, MLOps pipelines, generative AI, and advanced analytics implementation.",
       technologies: ["MLOps", "TensorFlow", "Generative AI", "Analytics"],
-      gradient: "from-orange-500 to-red-500"
+      gradient: "from-orange-500 to-red-500",
+      href: "/services/ai-mlops"
     },
     {
       title: "Cloud Solutions & Infrastructure",
       icon: Cloud,
       description: "AWS, Azure, OCI, GCP, Oracle Integration Cloud, IaaS, PaaS, SaaS offerings with cloud-native implementations.",
       technologies: ["AWS", "Azure", "Kubernetes", "Docker"],
-      gradient: "from-indigo-500 to-blue-500"
+      gradient: "from-indigo-500 to-blue-500",
+      href: "/services/cloud-solutions"
     },
     {
       title: "DevOps & SRE",
       icon: Settings,
       description: "Kubernetes, OpenShift, Docker, CI/CD pipelines, deployment automation, and site reliability engineering.",
       technologies: ["Kubernetes", "OpenShift", "CI/CD", "Monitoring"],
-      gradient: "from-yellow-500 to-orange-500"
+      gradient: "from-yellow-500 to-orange-500",
+      href: "/services/devops-sre"
     },
     {
       title: "Enterprise Solutions",
       icon: Server,
       description: "Oracle Fusion/EBS, Oracle Cloud Infrastructure, Siebel, Oracle BRM, OSM, UIM, and BSS/OSS transformations.",
       technologies: ["Oracle Fusion", "Oracle BRM", "BSS/OSS", "Siebel"],
-      gradient: "from-pink-500 to-rose-500"
+      gradient: "from-pink-500 to-rose-500",
+      href: "/services/enterprise-solutions"
     },
     {
       title: "Web & Mobile Development",
       icon: Smartphone,
       description: "Full Stack (Java/.Net), Java Spring Boot, Salesforce, React, Angular development with modern frameworks.",
       technologies: ["React", "Angular", "Spring Boot", "Salesforce"],
-      gradient: "from-cyan-500 to-blue-500"
+      gradient: "from-cyan-500 to-blue-500",
+      href: "/services/web-mobile-dev"
     }
   ];
 
@@ -138,10 +147,13 @@ const Solutions = () => {
                       <span>Learn more</span>
                       <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
                     </div>
-                  </div>
-                  
-                  {/* Hover Effect Border */}
-                  <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${solution.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none`} />
+                  <Link 
+                    to={solution.href}
+                    className="flex items-center text-blue-400 text-sm font-medium group-hover:text-blue-300 transition-colors duration-300"
+                  >
+                    <span>Learn more</span>
+                    <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                  </Link>
                 </div>
               </div>
             );
