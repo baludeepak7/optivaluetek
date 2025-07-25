@@ -1,29 +1,27 @@
 import React from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import About from './components/About';
-import Services from './components/Services';
-import Industries from './components/Industries';
 import Solutions from './components/Solutions';
-import MonthlyTop3 from './components/MonthlyTop3';
-import Careers from './components/Careers';
+import Industries from './components/Industries';
+import CaseStudies from './components/CaseStudies';
 import Insights from './components/Insights';
-import Metrics from './components/Metrics';
+import Culture from './components/Culture';
+import Testimonials from './components/Testimonials';
+import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <Header />
       <Hero />
-      <Insights />
-      <About />
-      <Services />
-      <Industries />
       <Solutions />
-      <MonthlyTop3 />
-      <Careers />
-      <Metrics />
+      <Industries />
+      <CaseStudies />
+      <Insights />
+      <Culture />
+      <Testimonials />
+      <ContactForm />
       <Footer />
     </div>
   );
