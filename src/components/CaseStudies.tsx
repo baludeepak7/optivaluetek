@@ -113,7 +113,7 @@ const CaseStudies = () => {
           {caseStudies.map((study, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
+             className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col"
             >
               <div className="p-8">
                 <h3 
@@ -134,7 +134,7 @@ const CaseStudies = () => {
                 </div>
 
                 {expandedCard === index && (
-                  <div className="space-y-6 mb-6">
+                 <div className="space-y-6 mb-6 animate-in slide-in-from-top-2 duration-300">
                     <div>
                       <h4 className="font-bold text-[#333333] mb-2">Challenge:</h4>
                       <p className="text-[#666666]" style={{ fontFamily: 'Inter' }}>
@@ -169,7 +169,8 @@ const CaseStudies = () => {
                   </div>
                 )}
 
-                <button
+               <div className="mt-auto">
+                 <button
                   onClick={() => toggleCard(index)}
                   className="flex items-center gap-2 text-[#D36A47] font-semibold hover:text-[#B85A3D] transition-colors duration-300"
                 >
@@ -183,6 +184,7 @@ const CaseStudies = () => {
                     </>
                   )}
                 </button>
+               </div>
               </div>
             </div>
           ))}
