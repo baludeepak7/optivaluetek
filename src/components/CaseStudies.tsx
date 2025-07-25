@@ -6,22 +6,84 @@ const CaseStudies = () => {
 
   const caseStudies = [
     {
-      title: "Modernizing Telecom API Gateway",
-      subtitle: "Reduced partner onboarding from 4 weeks to 4 days",
-      problem: "Manual onboarding of partners delayed launch cycles and created operational bottlenecks.",
-      solution: "Built an API Gateway using Kong and implemented CI/CD for partner configuration management.",
-      result: "80% reduction in onboarding time, enabling faster go-to-market strategies.",
-      quote: "OptiValueTek helped us redefine agility in our partner ecosystem.",
-      author: "CIO, Global Telecom Provider"
+      title: "Transforming Telecom: Monolith to Modular",
+      subtitle: "30% improvement in response time with scalable microservices",
+      client: "Leading Telecom Provider",
+      industry: "Telecommunications",
+      problem: "Legacy monolithic architecture was difficult to scale and maintain, causing performance degradation, frequent service disruptions, and complex integration flows across 40+ customer-facing channels.",
+      solution: "Deployed 70+ experts to re-architect the system into scalable microservices using Oracle BRM, modernized CRM, implemented service isolation for fault-tolerant APIs, and shifted to token-based security with OpenShift, AWS, Kafka, Red Hat SSO, and Dynatrace.",
+      results: [
+        "🚀 30% improvement in response time",
+        "🔒 Robust, token-secured architecture", 
+        "📊 Real-time monitoring with Prometheus & ELK",
+        "⚙️ Future-ready DevOps pipelines at maturity level 4"
+      ],
+      quote: "OptiValue Tek's transformation not only addressed our immediate challenges but set us up for future growth.",
+      author: "Client CTO"
     },
     {
-      title: "Predictive Analytics in Fintech",
-      subtitle: "Detected loan defaults 30% earlier",
-      problem: "Late-stage risk detection hurt financial health and customer relationships.",
-      solution: "Created a real-time risk scoring engine using ML models and streaming data pipelines.",
-      result: "Default risk detection improved by 30%, saving millions in potential losses.",
-      quote: "The predictive insights have transformed our risk management approach.",
-      author: "Risk Director, Leading Fintech"
+      title: "Building Versatile API Gateway from Scratch",
+      subtitle: "50% faster API responses with enterprise-ready gateway",
+      client: "Telecom Infrastructure Firm",
+      industry: "API Management / Telecommunications",
+      problem: "Growing API traffic and integration demands required a flexible, secure, high-performance API gateway capable of unifying microservices access, load balancing, caching, and supporting cloud, on-prem, and hybrid setups.",
+      solution: "Built an open-source, enterprise-ready API Gateway with unified entry points, advanced traffic routing and load distribution, layered caching and real-time monitoring, plus seamless compatibility with Kubernetes, OpenShift, and Docker.",
+      results: [
+        "⏱️ 50% faster API responses via caching and load balancing",
+        "🔐 Centralized security with advanced access control",
+        "💸 Reduced infra costs through optimized routing",
+        "🛠️ Open-source flexibility with no vendor lock-in"
+      ],
+      quote: "This gateway empowered our internal teams and enhanced partner integration while saving licensing costs.",
+      author: "Infrastructure Team Lead"
+    },
+    {
+      title: "Agile Telecom Transformation with Microservices",
+      subtitle: "3x faster time-to-market with 20% cost reduction",
+      client: "Tier-1 Telecom Operator",
+      industry: "Telecommunications",
+      problem: "Sluggish feature rollout due to monolithic dependencies, inability to scale individual components independently, and high operational expenses were limiting business agility.",
+      solution: "Restructured system into microservices using Docker + Kubernetes for orchestration, implemented CI/CD pipelines for faster deployments, and deployed distributed data management with fail-safe patterns.",
+      results: [
+        "🚀 3x faster time-to-market for new features",
+        "💡 20% reduction in operational costs",
+        "🤝 Enhanced cross-team collaboration",
+        "🔄 Independent component scaling capability"
+      ],
+      quote: "From rigid to responsive — a foundational shift in our software delivery.",
+      author: "Engineering Director"
+    },
+    {
+      title: "Cloud Migration & DevOps Modernization",
+      subtitle: "40% cost savings with 60% faster release cycles",
+      client: "Global Telecom Provider",
+      industry: "Telecommunications / Cloud",
+      problem: "Traditional IT setup led to high infrastructure costs, limited agility, delayed deployments, and compliance and security issues during digital transformation.",
+      solution: "Orchestrated seamless migration to AWS Cloud with full-stack DevOps and CI/CD pipelines, enabled auto-scaling and hybrid cloud capabilities, and introduced advanced logging, monitoring, and governance.",
+      results: [
+        "☁️ 40% cost savings in infrastructure",
+        "🔁 60% faster release cycles",
+        "🔐 Full compliance with telecom data regulations",
+        "📈 Auto-scaling and hybrid cloud capabilities"
+      ],
+      quote: "A pivotal step into a cloud-first, agile future.",
+      author: "Cloud Operations Lead"
+    },
+    {
+      title: "CRM-Led Transformation for Banking & Logistics",
+      subtitle: "25% increase in conversion rates with AI-powered insights",
+      client: "Major Bank and Dalko Logistics",
+      industry: "Banking, Logistics",
+      problem: "Fragmented customer data, duplicate records, scattered communications, and poor visibility into leads and transactions were hampering sales effectiveness and customer experience.",
+      solution: "Implemented comprehensive CRM platform with centralized customer data and deduplication, automated sales pipelines with intelligent lead scoring, and AI-powered campaign and sales prediction modules.",
+      results: [
+        "📈 25% increase in conversion rates",
+        "💬 Personalized outreach through real-time customer signals",
+        "📊 15% revenue growth from accurate sales forecasts",
+        "🎯 Intelligent lead scoring and automated pipelines"
+      ],
+      quote: "Our teams now operate with clarity, speed, and precision — thanks to a data-first CRM strategy.",
+      author: "Sales Operations Director"
     }
   ];
 
@@ -43,11 +105,11 @@ const CaseStudies = () => {
             className="text-xl text-[#666666] max-w-3xl mx-auto"
             style={{ fontFamily: 'Roboto' }}
           >
-            Real results from our digital transformation partnerships
+            Real results from our digital transformation partnerships across industries
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
           {caseStudies.map((study, index) => (
             <div
               key={index}
@@ -55,17 +117,21 @@ const CaseStudies = () => {
             >
               <div className="p-8">
                 <h3 
-                  className="text-2xl font-bold text-[#333333] mb-3"
+                  className="text-2xl font-bold text-[#333333] mb-2"
                   style={{ fontFamily: 'Poppins' }}
                 >
                   {study.title}
                 </h3>
                 <p 
-                  className="text-lg text-[#D36A47] font-semibold mb-6"
+                  className="text-lg text-[#D36A47] font-semibold mb-3"
                   style={{ fontFamily: 'Roboto' }}
                 >
                   {study.subtitle}
                 </p>
+                <div className="flex gap-4 mb-6 text-sm text-[#666666]">
+                  <span className="bg-[#F5EBDD] px-3 py-1 rounded-full">{study.client}</span>
+                  <span className="bg-[#F5EBDD] px-3 py-1 rounded-full">{study.industry}</span>
+                </div>
 
                 {expandedCard === index && (
                   <div className="space-y-6 mb-6">
@@ -82,10 +148,14 @@ const CaseStudies = () => {
                       </p>
                     </div>
                     <div>
-                      <h4 className="font-bold text-[#333333] mb-2">Result:</h4>
-                      <p className="text-[#666666]" style={{ fontFamily: 'Inter' }}>
-                        {study.result}
-                      </p>
+                      <h4 className="font-bold text-[#333333] mb-2">Results:</h4>
+                      <ul className="space-y-2">
+                        {study.results.map((result, idx) => (
+                          <li key={idx} className="text-[#666666]" style={{ fontFamily: 'Inter' }}>
+                            {result}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                     <div className="bg-[#F5EBDD] p-4 rounded-lg">
                       <p 
