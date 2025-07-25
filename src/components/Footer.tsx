@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Linkedin, Twitter, Youtube, Mail } from 'lucide-react';
+import { Linkedin, Twitter, Youtube, Mail, Send, MapPin, Phone, Globe } from 'lucide-react';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
@@ -7,94 +7,115 @@ const Footer = () => {
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Newsletter signup:', { email, gdprConsent });
+    const subject = 'Newsletter Subscription Request';
+    const body = `Email: ${email}\nGDPR Consent: ${gdprConsent ? 'Yes' : 'No'}`;
+    window.open(`mailto:contact@optivaluetek.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`, '_blank');
     setEmail('');
     setGdprConsent(false);
   };
 
-  const offices = ['Bengaluru, India', 'Texas, USA', 'NSW, Australia'];
-  const links = ['Privacy Policy', 'Terms of Service', 'Sitemap'];
+  const services = [
+    'Application & Process Integration',
+    'API Management',
+    'Data Engineering',
+    'AI/MLOps',
+    'DevOps & SRE',
+    'Cloud Solutions'
+  ];
+
+  const industries = [
+    'Telecom & BSS/OSS',
+    'Banking & FinTech',
+    'Healthcare',
+    'Logistics & Supply Chain',
+    'Legacy Modernization',
+    'Emerging Technologies'
+  ];
 
   return (
-    <footer className="bg-[#333333] text-white py-16">
-      <div className="container mx-auto px-4">
+    <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-black relative overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `radial-gradient(circle at 25% 25%, #3b82f6 0%, transparent 50%), 
+                           radial-gradient(circle at 75% 75%, #8b5cf6 0%, transparent 50%)`
+        }} />
+      </div>
+
+      <div className="container mx-auto px-4 py-16 relative z-10">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
-          <div>
-            <div className="flex items-center space-x-2 mb-6">
-              <div className="w-10 h-10 bg-[#A47864] rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">O</span>
+          <div className="lg:col-span-1">
+            <div className="flex items-center space-x-3 mb-6">
+              <div className="relative">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                  <span className="text-white font-bold text-xl">O</span>
+                </div>
+                <div className="absolute -inset-1 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl blur opacity-30 animate-pulse" />
               </div>
               <div>
-                <h3 
-                  className="text-xl font-bold"
-                  style={{ fontFamily: 'Poppins' }}
-                >
+                <h3 className="text-xl font-bold text-white">
                   OptiValueTek
                 </h3>
-                <p className="text-sm text-gray-400">Digital Transformation & Enterprise Modernization</p>
+                <p className="text-sm text-blue-400">Digital Transformation & Enterprise Modernization</p>
               </div>
             </div>
-            <div className="space-y-2 text-sm text-gray-300">
-              <p>📧 contact@optivaluetek.com</p>
-              <p>📱 WhatsApp: +91 90355 10431</p>
-              <p>🇺🇸 USA: +1 404 390 5281</p>
-              <p>🇮🇳 India: +91 90355 10431</p>
-              <p>🇦🇺 Australia: +61 432 111 764</p>
+            
+            <p className="text-gray-300 mb-6 leading-relaxed">
+              Global technology consulting company specializing in digital transformation and enterprise modernization across 15+ countries.
+            </p>
+
+            <div className="space-y-3 text-sm text-gray-300">
+              <div className="flex items-center gap-3">
+                <Mail size={16} className="text-blue-400" />
+                <span>contact@optivaluetek.com</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Phone size={16} className="text-green-400" />
+                <span>WhatsApp: +91 90355 10431</span>
+              </div>
             </div>
           </div>
 
-          {/* Offices */}
+          {/* Services */}
           <div>
-            <h4 
-              className="text-lg font-bold mb-6"
-              style={{ fontFamily: 'Poppins' }}
-            >
-              Offices
+            <h4 className="text-lg font-bold text-white mb-6">
+              Our Services
             </h4>
             <ul className="space-y-3">
-              <li className="text-gray-300" style={{ fontFamily: 'Inter' }}>🇮🇳 Bengaluru, India</li>
-              <li className="text-gray-300" style={{ fontFamily: 'Inter' }}>🇺🇸 Texas, USA</li>
-              <li className="text-gray-300" style={{ fontFamily: 'Inter' }}>🇦🇺 NSW, Australia</li>
-              <li className="text-gray-300" style={{ fontFamily: 'Inter' }}>🇦🇪 UAE</li>
-            </ul>
-            <div className="mt-4">
-              <h5 className="font-semibold text-white mb-2">Project Delivery</h5>
-              <p className="text-sm text-gray-400">Malaysia • South Korea • Europe • Middle East • UK • US • India • ANZ</p>
-            </div>
-          </div>
-
-          {/* Links */}
-          <div>
-            <h4 
-              className="text-lg font-bold mb-6"
-              style={{ fontFamily: 'Poppins' }}
-            >
-              Links
-            </h4>
-            <ul className="space-y-3">
-              {links.map((link, index) => (
+              {services.map((service, index) => (
                 <li key={index}>
-                  <button 
-                    className="text-gray-300 hover:text-white transition-colors duration-300"
-                    style={{ fontFamily: 'Inter' }}
-                  >
-                    {link}
+                  <button className="text-gray-300 hover:text-white transition-colors duration-300 text-left text-sm">
+                    {service}
                   </button>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Newsletter */}
+          {/* Industries */}
           <div>
-            <h4 
-              className="text-lg font-bold mb-6"
-              style={{ fontFamily: 'Poppins' }}
-            >
-              Newsletter
+            <h4 className="text-lg font-bold text-white mb-6">
+              Industries
             </h4>
-            <form onSubmit={handleNewsletterSubmit} className="space-y-4">
+            <ul className="space-y-3">
+              {industries.map((industry, index) => (
+                <li key={index}>
+                  <button className="text-gray-300 hover:text-white transition-colors duration-300 text-left text-sm">
+                    {industry}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Newsletter & Contact */}
+          <div>
+            <h4 className="text-lg font-bold text-white mb-6">
+              Stay Connected
+            </h4>
+            
+            <form onSubmit={handleNewsletterSubmit} className="space-y-4 mb-6">
               <div className="flex">
                 <input
                   type="email"
@@ -102,14 +123,13 @@ const Footer = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Your email"
                   required
-                  className="flex-1 px-4 py-2 bg-gray-700 text-white rounded-l-lg border border-gray-600 focus:outline-none focus:border-[#A47864]"
-                  style={{ fontFamily: 'Inter' }}
+                  className="flex-1 px-4 py-2 bg-gray-700/50 text-white rounded-l-xl border border-gray-600/50 focus:outline-none focus:border-blue-500 placeholder-gray-400"
                 />
                 <button
                   type="submit"
-                  className="bg-[#A47864] px-4 py-2 rounded-r-lg hover:bg-[#8B6551] transition-colors duration-300"
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 px-4 py-2 rounded-r-xl hover:from-blue-700 hover:to-purple-700 transition-colors duration-300"
                 >
-                  <Mail size={20} />
+                  <Send size={20} className="text-white" />
                 </button>
               </div>
               <div className="flex items-start gap-2">
@@ -119,27 +139,59 @@ const Footer = () => {
                   checked={gdprConsent}
                   onChange={(e) => setGdprConsent(e.target.checked)}
                   required
-                  className="mt-1 w-4 h-4 text-[#A47864] border-gray-600 rounded focus:ring-[#A47864] bg-gray-700"
+                  className="mt-1 w-4 h-4 text-blue-500 border-gray-600 rounded focus:ring-blue-500 bg-gray-700"
                 />
-                <label 
-                  htmlFor="newsletterGdpr" 
-                  className="text-xs text-gray-400"
-                  style={{ fontFamily: 'Inter' }}
-                >
+                <label htmlFor="newsletterGdpr" className="text-xs text-gray-400">
                   I consent to receive marketing emails
                 </label>
               </div>
             </form>
+
+            <div className="space-y-4">
+              <h5 className="font-semibold text-white text-sm">Global Offices</h5>
+              <div className="space-y-2 text-xs text-gray-400">
+                <div className="flex items-center gap-2">
+                  <MapPin size={12} />
+                  <span>🇮🇳 Bengaluru, India</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <MapPin size={12} />
+                  <span>🇺🇸 Texas, USA</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <MapPin size={12} />
+                  <span>🇦🇺 NSW, Australia</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <MapPin size={12} />
+                  <span>🇦🇪 UAE</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Global Presence */}
+        <div className="border-t border-gray-700/50 pt-8 mb-8">
+          <div className="text-center">
+            <h5 className="font-semibold text-white mb-4 flex items-center justify-center gap-2">
+              <Globe size={20} className="text-blue-400" />
+              Project Delivery Regions
+            </h5>
+            <div className="flex flex-wrap justify-center gap-3">
+              {['Malaysia', 'South Korea', 'Europe', 'Middle East', 'UK', 'US', 'India', 'ANZ'].map((region, index) => (
+                <span key={index} className="px-3 py-1 bg-gray-700/50 text-gray-300 text-sm rounded-full border border-gray-600/50">
+                  {region}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-gray-700 pt-8">
+        <div className="border-t border-gray-700/50 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p 
-              className="text-gray-400"
-              style={{ fontFamily: 'Inter' }}
-            >
+            <p className="text-gray-400 text-sm">
               ©2025 OptiValueTek. All rights reserved.
             </p>
             
@@ -153,6 +205,14 @@ const Footer = () => {
               <button className="text-gray-400 hover:text-white transition-colors duration-300">
                 <Youtube size={24} />
               </button>
+            </div>
+          </div>
+          
+          <div className="mt-4 text-center">
+            <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
+              <button className="hover:text-white transition-colors duration-300">Privacy Policy</button>
+              <button className="hover:text-white transition-colors duration-300">Terms of Service</button>
+              <button className="hover:text-white transition-colors duration-300">Sitemap</button>
             </div>
           </div>
         </div>

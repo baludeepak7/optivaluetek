@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Send, CheckCircle } from 'lucide-react';
+import { Send, CheckCircle, Mail, Phone, MapPin } from 'lucide-react';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -15,8 +15,20 @@ const ContactForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
-    console.log('Form submitted:', formData);
+    // Create email with form data
+    const subject = `Contact Form Submission from ${formData.name}`;
+    const body = `Name: ${formData.name}
+Email: ${formData.email}
+Company: ${formData.company}
+Role: ${formData.role}
+Inquiry Type: ${formData.inquiryType}
+
+Message:
+${formData.message}
+
+GDPR Consent: ${formData.gdprConsent ? 'Yes' : 'No'}`;
+    
+    window.open(`mailto:contact@optivaluetek.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`, '_blank');
     setIsSubmitted(true);
   };
 
@@ -30,21 +42,24 @@ const ContactForm = () => {
 
   if (isSubmitted) {
     return (
-      <section id="contact" className="py-20 bg-[#F5EBDD]">
-        <div className="container mx-auto px-4">
+      <section id="contact" className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black relative overflow-hidden">
+        {/* Background Effects */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 50% 50%, #10b981 0%, transparent 50%)`
+          }} />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-2xl mx-auto text-center">
-            <div className="bg-white p-12 rounded-2xl shadow-lg">
-              <CheckCircle size={64} className="text-green-500 mx-auto mb-6" />
-              <h2 
-                className="text-3xl font-bold text-[#333333] mb-4"
-                style={{ fontFamily: 'Poppins' }}
-              >
+            <div className="bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 p-12 rounded-3xl shadow-2xl">
+              <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                <CheckCircle size={40} className="text-white" />
+              </div>
+              <h2 className="text-4xl font-bold text-white mb-4">
                 Thank You!
               </h2>
-              <p 
-                className="text-xl text-[#666666]"
-                style={{ fontFamily: 'Inter' }}
-              >
+              <p className="text-xl text-gray-300">
                 Thanks! We'll be in touch within 1 business day.
               </p>
             </div>
@@ -55,178 +70,219 @@ const ContactForm = () => {
   }
 
   return (
-    <section id="contact" className="py-20 bg-[#F5EBDD]">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 
-              className="text-4xl lg:text-5xl font-bold text-[#333333] mb-6"
-              style={{ fontFamily: 'Poppins' }}
-            >
+    <section id="contact" className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black relative overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `radial-gradient(circle at 25% 75%, #3b82f6 0%, transparent 50%), 
+                           radial-gradient(circle at 75% 25%, #8b5cf6 0%, transparent 50%)`
+        }} />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center mb-16">
+          <div className="inline-block px-4 py-2 bg-blue-600/20 backdrop-blur-sm border border-blue-400/30 rounded-full text-blue-300 text-sm font-medium mb-6">
+            Get In Touch
+          </div>
+          <h2 className="text-5xl lg:text-6xl font-bold text-white mb-6">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400">
               Talk to Our Experts
-            </h2>
-            <p 
-              className="text-xl text-[#666666]"
-              style={{ fontFamily: 'Roboto' }}
-            >
-              Ready to accelerate your digital transformation? Let's discuss your project.
-            </p>
+            </span>
+          </h2>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Ready to accelerate your digital transformation? Let's discuss your project and explore how we can help.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-3 gap-12 max-w-7xl mx-auto">
+          {/* Contact Information */}
+          <div className="lg:col-span-1">
+            <div className="space-y-8">
+              <div className="bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8">
+                <h3 className="text-2xl font-bold text-white mb-6">Contact Information</h3>
+                
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center">
+                      <Mail size={20} className="text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white mb-1">Email</h4>
+                      <p className="text-gray-300">contact@optivaluetek.com</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-500 rounded-xl flex items-center justify-center">
+                      <Phone size={20} className="text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white mb-1">Phone</h4>
+                      <div className="text-gray-300 space-y-1">
+                        <p>🇺🇸 USA: +1 404 390 5281</p>
+                        <p>🇮🇳 India: +91 90355 10431</p>
+                        <p>🇦🇺 Australia: +61 432 111 764</p>
+                        <p>📱 WhatsApp: +91 90355 10431</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
+                      <MapPin size={20} className="text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white mb-1">Global Offices</h4>
+                      <div className="text-gray-300 space-y-1">
+                        <p>🇮🇳 Bengaluru, India</p>
+                        <p>🇺🇸 Texas, USA</p>
+                        <p>🇦🇺 NSW, Australia</p>
+                        <p>🇦🇪 UAE</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8">
+                <h3 className="text-xl font-bold text-white mb-4">Project Delivery Regions</h3>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Malaysia • South Korea • Europe • Middle East • UK • US • India • ANZ
+                </p>
+              </div>
+            </div>
           </div>
 
-          <div className="bg-white p-8 lg:p-12 rounded-2xl shadow-lg">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
+          {/* Contact Form */}
+          <div className="lg:col-span-2">
+            <div className="bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8 lg:p-12">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-semibold text-white mb-2">
+                      Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      required
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-300"
+                      placeholder="Your full name"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-semibold text-white mb-2">
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-300"
+                      placeholder="your.email@company.com"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="company" className="block text-sm font-semibold text-white mb-2">
+                      Company
+                    </label>
+                    <input
+                      type="text"
+                      id="company"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-300"
+                      placeholder="Your company name"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="role" className="block text-sm font-semibold text-white mb-2">
+                      Role
+                    </label>
+                    <input
+                      type="text"
+                      id="role"
+                      name="role"
+                      value={formData.role}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-300"
+                      placeholder="Your job title"
+                    />
+                  </div>
+                </div>
+
                 <div>
-                  <label 
-                    htmlFor="name" 
-                    className="block text-sm font-semibold text-[#333333] mb-2"
-                    style={{ fontFamily: 'Roboto' }}
-                  >
-                    Name *
+                  <label htmlFor="inquiryType" className="block text-sm font-semibold text-white mb-2">
+                    Inquiry Type
                   </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
+                  <select
+                    id="inquiryType"
+                    name="inquiryType"
+                    value={formData.inquiryType}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-xl text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-300"
+                  >
+                    <option value="">Select inquiry type</option>
+                    <option value="digital-transformation">Digital Transformation</option>
+                    <option value="api-management">API Management</option>
+                    <option value="cloud-migration">Cloud Migration</option>
+                    <option value="bss-oss">BSS/OSS Solutions</option>
+                    <option value="ai-ml">AI/ML Solutions</option>
+                    <option value="staffing">Staffing Partnership</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-semibold text-white mb-2">
+                    Message *
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
                     required
-                    value={formData.name}
+                    rows={5}
+                    value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#A47864] focus:border-transparent outline-none transition-all duration-300"
-                    style={{ fontFamily: 'Inter' }}
+                    className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-300"
+                    placeholder="Tell us about your project requirements, challenges, or how we can help..."
                   />
                 </div>
-                <div>
-                  <label 
-                    htmlFor="email" 
-                    className="block text-sm font-semibold text-[#333333] mb-2"
-                    style={{ fontFamily: 'Roboto' }}
-                  >
-                    Email *
-                  </label>
+
+                <div className="flex items-start gap-3">
                   <input
-                    type="email"
-                    id="email"
-                    name="email"
+                    type="checkbox"
+                    id="gdprConsent"
+                    name="gdprConsent"
                     required
-                    value={formData.email}
+                    checked={formData.gdprConsent}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#A47864] focus:border-transparent outline-none transition-all duration-300"
-                    style={{ fontFamily: 'Inter' }}
+                    className="mt-1 w-4 h-4 text-blue-500 border-gray-600 rounded focus:ring-blue-500 bg-gray-700"
                   />
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label 
-                    htmlFor="company" 
-                    className="block text-sm font-semibold text-[#333333] mb-2"
-                    style={{ fontFamily: 'Roboto' }}
-                  >
-                    Company
+                  <label htmlFor="gdprConsent" className="text-sm text-gray-300">
+                    I consent to OptiValueTek processing my personal data for the purpose of responding to my inquiry, in accordance with our Privacy Policy.
                   </label>
-                  <input
-                    type="text"
-                    id="company"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#A47864] focus:border-transparent outline-none transition-all duration-300"
-                    style={{ fontFamily: 'Inter' }}
-                  />
                 </div>
-                <div>
-                  <label 
-                    htmlFor="role" 
-                    className="block text-sm font-semibold text-[#333333] mb-2"
-                    style={{ fontFamily: 'Roboto' }}
-                  >
-                    Role
-                  </label>
-                  <input
-                    type="text"
-                    id="role"
-                    name="role"
-                    value={formData.role}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#A47864] focus:border-transparent outline-none transition-all duration-300"
-                    style={{ fontFamily: 'Inter' }}
-                  />
-                </div>
-              </div>
 
-              <div>
-                <label 
-                  htmlFor="inquiryType" 
-                  className="block text-sm font-semibold text-[#333333] mb-2"
-                  style={{ fontFamily: 'Roboto' }}
+                <button
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 font-semibold text-lg flex items-center justify-center gap-3 shadow-2xl"
                 >
-                  Inquiry Type
-                </label>
-                <select
-                  id="inquiryType"
-                  name="inquiryType"
-                  value={formData.inquiryType}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#A47864] focus:border-transparent outline-none transition-all duration-300"
-                  style={{ fontFamily: 'Inter' }}
-                >
-                  <option value="">Select inquiry type</option>
-                  <option value="solutions">Solutions</option>
-                  <option value="case-study">Case Study</option>
-                  <option value="partnership">Partnership</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-
-              <div>
-                <label 
-                  htmlFor="message" 
-                  className="block text-sm font-semibold text-[#333333] mb-2"
-                  style={{ fontFamily: 'Roboto' }}
-                >
-                  Message *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={5}
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#A47864] focus:border-transparent outline-none transition-all duration-300"
-                  style={{ fontFamily: 'Inter' }}
-                  placeholder="Tell us about your project requirements..."
-                />
-              </div>
-
-              <div className="flex items-start gap-3">
-                <input
-                  type="checkbox"
-                  id="gdprConsent"
-                  name="gdprConsent"
-                  required
-                  checked={formData.gdprConsent}
-                  onChange={handleChange}
-                  className="mt-1 w-4 h-4 text-[#A47864] border-gray-300 rounded focus:ring-[#A47864]"
-                />
-                <label 
-                  htmlFor="gdprConsent" 
-                  className="text-sm text-[#666666]"
-                  style={{ fontFamily: 'Inter' }}
-                >
-                  I consent to OptiValueTek processing my personal data for the purpose of responding to my inquiry, in accordance with our Privacy Policy.
-                </label>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-[#D36A47] text-white px-8 py-4 rounded-lg hover:bg-[#B85A3D] transition-all duration-300 transform hover:scale-105 font-semibold text-lg flex items-center justify-center gap-2"
-              >
-                <Send size={20} />
-                Send Message
-              </button>
-            </form>
+                  <Send size={20} />
+                  Send Message
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
