@@ -2,6 +2,16 @@ import React from 'react';
 import { ArrowRight, Calendar, FileText } from 'lucide-react';
 
 const Insights = () => {
+  const handleInsightClick = (type: string, title: string) => {
+    if (type === 'event') {
+      // For events, you could integrate with a calendar system or registration form
+      window.open('mailto:contact@optivaluetek.com?subject=Webinar Registration: ' + encodeURIComponent(title), '_blank');
+    } else {
+      // For articles and guides, you could link to actual content or contact form
+      window.open('mailto:contact@optivaluetek.com?subject=Request for: ' + encodeURIComponent(title), '_blank');
+    }
+  };
+
   const insights = [
     {
       title: "Red Hat Fuse: Building Cloud-Native Microservices",
@@ -87,7 +97,10 @@ const Insights = () => {
                   {insight.summary}
                 </p>
 
-                <button className="flex items-center gap-2 text-[#D36A47] font-semibold hover:text-[#B85A3D] transition-colors duration-300 group-hover:gap-3">
+                <button 
+                  onClick={() => handleInsightClick(insight.type, insight.title)}
+                  className="flex items-center gap-2 text-[#D36A47] font-semibold hover:text-[#B85A3D] transition-colors duration-300 group-hover:gap-3"
+                >
                   {insight.cta}
                   <ArrowRight size={16} />
                 </button>

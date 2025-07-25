@@ -2,6 +2,20 @@ import React from 'react';
 import { MapPin, Clock, Users, Heart } from 'lucide-react';
 
 const Culture = () => {
+  const handleApplyClick = (jobTitle: string) => {
+    const subject = `Application for ${jobTitle} Position`;
+    const body = `Dear OptiValueTek Team,\n\nI am interested in applying for the ${jobTitle} position. Please find my details below:\n\nName: \nExperience: \nLocation: \nContact: \n\nI look forward to hearing from you.\n\nBest regards,`;
+    
+    window.open(`mailto:contact@optivaluetek.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`, '_blank');
+  };
+
+  const handleViewAllRoles = () => {
+    const subject = 'Inquiry about Available Positions';
+    const body = 'Dear OptiValueTek Team,\n\nI would like to learn more about all available positions at your company. Please share the complete list of current openings.\n\nThank you.';
+    
+    window.open(`mailto:contact@optivaluetek.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`, '_blank');
+  };
+
   const values = ['Innovation', 'Ownership', 'Empathy', 'Quality'];
   const perks = ['Remote-first', 'Health coverage', 'Training budget', 'Offsites'];
   
@@ -153,14 +167,20 @@ const Culture = () => {
                       {job.type}
                     </span>
                   </div>
-                  <button className="text-[#D36A47] font-semibold hover:text-[#B85A3D] transition-colors duration-300">
+                  <button 
+                    onClick={() => handleApplyClick(job.title)}
+                    className="text-[#D36A47] font-semibold hover:text-[#B85A3D] transition-colors duration-300"
+                  >
                     Apply Now →
                   </button>
                 </div>
               ))}
             </div>
             
-            <button className="mt-6 bg-[#A47864] text-white px-8 py-3 rounded-lg hover:bg-[#8B6551] transition-colors duration-300 font-semibold">
+            <button 
+              onClick={handleViewAllRoles}
+              className="mt-6 bg-[#A47864] text-white px-8 py-3 rounded-lg hover:bg-[#8B6551] transition-colors duration-300 font-semibold"
+            >
               View All Roles
             </button>
           </div>
