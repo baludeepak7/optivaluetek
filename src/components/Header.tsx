@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,11 +15,41 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'Solutions', href: '#solutions' },
-    { name: 'Industries', href: '#industries' },
-    { name: 'Case Studies', href: '#case-studies' },
-    { name: 'Insights', href: '#insights' },
+    { 
+      name: 'What we do', 
+      href: '#solutions',
+      hasDropdown: true,
+      dropdownItems: [
+        'Application & Process Integration',
+        'API Management',
+        'Data Engineering',
+        'AI/MLOps',
+        'Cloud Solutions',
+        'DevOps & SRE'
+      ]
+    },
+    { 
+      name: 'Who we are', 
+      href: '#industries',
+      hasDropdown: true,
+      dropdownItems: [
+        'Company Overview',
+        'Global Locations',
+        'Awards & Recognition',
+        'Client Success Stories'
+      ]
+    },
+    { 
+      name: 'Insights', 
+      href: '#insights',
+      hasDropdown: true,
+      dropdownItems: [
+        'Case Studies',
+        'White Papers',
+        'Webinars',
+        'Technology Blogs'
+      ]
+    },
     { name: 'Careers', href: '#careers' }
   ];
 
@@ -28,49 +59,89 @@ const Header = () => {
       element.scrollIntoView({ behavior: 'smooth' });
     }
     setIsMenuOpen(false);
+    setActiveDropdown(null);
   };
 
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white shadow-lg' : 'bg-white/95 backdrop-blur-sm'
+      isScrolled 
+        ? 'bg-gray-900/95 backdrop-blur-md shadow-2xl border-b border-gray-800/50' 
+        : 'bg-gray-900/80 backdrop-blur-sm'
     }`}>
-      <nav className="container mx-auto px-4 py-2">
+      <nav className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-[#A47864] rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">O</span>
+          {/* Logo */}
+          <div className="flex items-center space-x-3">
+            <div className="relative">
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                <span className="text-white font-bold text-xl">O</span>
+              </div>
+              <div className="absolute -inset-1 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl blur opacity-30 animate-pulse" />
             </div>
             <div>
-              <h1 className="text-lg font-bold text-[#333333]" style={{ fontFamily: 'Poppins' }}>
+              <h1 className="text-xl font-bold text-white">
                 OptiValueTek
               </h1>
-              <p className="text-xs text-[#A47864] leading-tight">Digital Transformation & Enterprise Modernization</p>
+              <p className="text-xs text-blue-400 leading-tight">
+                Digital Transformation & Enterprise Modernization
+              </p>
             </div>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => (
-              <button
+              <div
                 key={item.name}
-                onClick={() => scrollToSection(item.href)}
-                className="text-[#333333] hover:text-[#A47864] transition-colors duration-200 font-medium text-sm"
-                style={{ fontFamily: 'Inter' }}
+                className="relative group"
+                onMouseEnter={() => item.hasDropdown && setActiveDropdown(item.name)}
+                onMouseLeave={() => setActiveDropdown(null)}
               >
-                {item.name}
-              </button>
+                <button
+                  onClick={() => scrollToSection(item.href)}
+                  className={`flex items-center gap-1 text-gray-300 hover:text-white transition-colors duration-200 font-medium text-sm py-2 ${
+                    item.name === 'What we do' ? 'text-orange-400' : ''
+                  }`}
+                >
+                  {item.name}
+                  {item.hasDropdown && (
+                    <ChevronDown 
+                      size={16} 
+                      className={`transition-transform duration-200 ${
+                        activeDropdown === item.name ? 'rotate-180' : ''
+                      }`} 
+                    />
+                  )}
+                </button>
+                
+                {/* Dropdown Menu */}
+                {item.hasDropdown && activeDropdown === item.name && (
+                  <div className="absolute top-full left-0 mt-2 w-64 bg-gray-800/95 backdrop-blur-md border border-gray-700/50 rounded-xl shadow-2xl py-2 animate-in slide-in-from-top-2 duration-200">
+                    {item.dropdownItems?.map((dropdownItem, index) => (
+                      <button
+                        key={index}
+                        className="block w-full text-left px-4 py-2 text-gray-300 hover:text-white hover:bg-gray-700/50 transition-colors duration-200 text-sm"
+                        onClick={() => scrollToSection(item.href)}
+                      >
+                        {dropdownItem}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
+            
             <button
               onClick={() => scrollToSection('#contact')}
-              className="bg-[#D36A47] text-white px-4 py-2 rounded-lg hover:bg-[#B85A3D] transition-colors duration-200 font-medium text-sm"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 font-medium text-sm transform hover:scale-105 shadow-lg"
             >
-              Contact
+              Contact us
             </button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden"
+            className="lg:hidden text-white"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -79,23 +150,22 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="lg:hidden mt-2 pb-3 border-t border-gray-200">
-            <div className="flex flex-col space-y-3 pt-3">
+          <div className="lg:hidden mt-4 pb-4 border-t border-gray-700/50">
+            <div className="flex flex-col space-y-4 pt-4">
               {navItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="text-[#333333] hover:text-[#A47864] transition-colors duration-200 font-medium text-left text-sm"
-                  style={{ fontFamily: 'Inter' }}
+                  className="text-gray-300 hover:text-white transition-colors duration-200 font-medium text-left text-sm"
                 >
                   {item.name}
                 </button>
               ))}
               <button
                 onClick={() => scrollToSection('#contact')}
-                className="bg-[#D36A47] text-white px-4 py-2 rounded-lg hover:bg-[#B85A3D] transition-colors duration-200 font-medium w-fit text-sm"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 font-medium w-fit text-sm"
               >
-                Contact
+                Contact us
               </button>
             </div>
           </div>
