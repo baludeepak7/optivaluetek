@@ -143,17 +143,14 @@ const Solutions = () => {
                     </div>
                     
                     {/* Learn More Link */}
-                    <div className="flex items-center text-blue-400 text-sm font-medium group-hover:text-blue-300 transition-colors duration-300">
+                    <Link 
+                      to={solution.href}
+                      className="flex items-center text-blue-400 text-sm font-medium group-hover:text-blue-300 transition-colors duration-300"
+                    >
                       <span>Learn more</span>
                       <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                    </div>
-                  <Link 
-                    to={solution.href}
-                    className="flex items-center text-blue-400 text-sm font-medium group-hover:text-blue-300 transition-colors duration-300"
-                  >
-                    <span>Learn more</span>
-                    <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                  </Link>
+                    </Link>
+                  </div>
                 </div>
               </div>
             );
