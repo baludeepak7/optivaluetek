@@ -6,23 +6,27 @@ const Industries = () => {
   const industries = [
     {
       title: "Telecom",
-      description: "Automate provisioning, billing, and partner onboarding with modern API-first solutions that reduce complexity and accelerate time-to-market."
+      description: "BSS/OSS stack implementations, Oracle BRM, OSM, UIM solutions, telecom application modernization, and specialized telecom consulting services."
     },
     {
       title: "Banking & FinTech",
-      description: "Open banking APIs, fraud detection, and credit intelligence systems that ensure compliance while driving innovation in financial services."
+      description: "CRM-led transformations, centralized customer data management, automated sales pipelines, and AI-powered campaign optimization for major banks."
     },
     {
       title: "Healthcare",
-      description: "FHIR-compliant systems, claims automation, and digital front door applications that improve patient outcomes and operational efficiency."
+      description: "Digital transformation initiatives, process automation, data integration solutions, and compliance-ready healthcare applications."
     },
     {
-      title: "Product Engineering",
-      description: "Co-create and launch B2B/B2C SaaS tools faster with modern development practices and scalable architecture patterns."
+      title: "Logistics & Supply Chain",
+      description: "CRM implementations like Dalko Logistics, process optimization, real-time tracking systems, and supply chain automation solutions."
     },
     {
       title: "Legacy Modernization",
-      description: "Reverse engineer & refactor monoliths with confidence using proven methodologies that minimize risk and maximize ROI."
+      description: "Monolith to microservices migration, application modernization, cloud workload migration, and digital transformation across industries."
+    },
+    {
+      title: "Emerging Technologies",
+      description: "Drone Image Analytics, Industrial Inspection solutions, GIS implementations, and cutting-edge technology consulting services."
     }
   ];
 

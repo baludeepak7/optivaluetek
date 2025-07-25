@@ -44,7 +44,7 @@ const Header = () => {
               <h1 className="text-lg font-bold text-[#333333]" style={{ fontFamily: 'Poppins' }}>
                 OptiValueTek
               </h1>
-              <p className="text-xs text-[#A47864] leading-tight">Data & API-Driven Enterprise Modernization</p>
+              <p className="text-xs text-[#A47864] leading-tight">Digital Transformation & Enterprise Modernization</p>
             </div>
           </div>
 

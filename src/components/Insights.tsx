@@ -4,22 +4,22 @@ import { ArrowRight, Calendar, FileText } from 'lucide-react';
 const Insights = () => {
   const insights = [
     {
-      title: "MLOps vs AIOps: What's Right for You?",
-      summary: "Understanding the core differences and choosing the right ops model for your AI initiatives.",
+      title: "Red Hat Fuse: Building Cloud-Native Microservices",
+      summary: "Learn how Red Hat Fuse integration platform built on Apache Camel enhances enterprise-grade integrations and microservices.",
       cta: "Read Article",
       type: "article",
-      readTime: "8 min read"
+      readTime: "10 min read"
     },
     {
-      title: "How to API-Enable Your Legacy System",
-      summary: "A comprehensive roadmap to turn your monolith into APIs, step by step guide.",
+      title: "Camunda BPM in Cloud-Native Architecture",
+      summary: "Discover how Camunda BPM provides powerful business process management capabilities in microservices environments.",
       cta: "Download Guide",
       type: "guide",
-      readTime: "15 min read"
+      readTime: "12 min read"
     },
     {
-      title: "AI Transformation Webinar",
-      summary: "Join us for a 45-min session on AI strategy and implementation best practices.",
+      title: "BSS/OSS Transformation Webinar",
+      summary: "Join our experts for insights on telecom BSS/OSS modernization and Oracle BRM implementation strategies.",
       cta: "Register Now",
       type: "event",
       date: "March 15, 2025"

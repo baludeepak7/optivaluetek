@@ -3,21 +3,25 @@ import { Star } from 'lucide-react';
 
 const Testimonials = () => {
   const stats = [
-    { label: "Projects Delivered", value: "100+" },
-    { label: "Engineers Globally", value: "200+" },
-    { label: "Yearly Growth", value: "30%" }
+    { label: "Global Projects", value: "500+" },
+    { label: "Countries Served", value: "15+" },
+    { label: "Technology Experts", value: "200+" }
   ];
 
-  const clients = ['Vodafone', 'Standard Chartered', 'MTN', 'Altech', 'Aditya Birla'];
+  const clients = ['Vodafone', 'Standard Chartered', 'MTN', 'Altech', 'Aditya Birla', 'Dalko Logistics'];
   
   const testimonials = [
     {
-      quote: "They're not just a vendor—they're strategic partners who understand our business.",
-      name: "Tech Lead, Global Bank"
+      quote: "OptiValue Tek's transformation not only addressed our immediate challenges but set us up for future growth.",
+      name: "CTO, Leading Telecom Provider"
     },
     {
-      quote: "We launched APIs 6x faster after engaging them. Exceptional expertise.",
-      name: "CTO, Telecom Group"
+      quote: "Our teams now operate with clarity, speed, and precision — thanks to a data-first CRM strategy.",
+      name: "Sales Operations Director, Major Bank"
+    },
+    {
+      quote: "This gateway empowered our internal teams and enhanced partner integration while saving licensing costs.",
+      name: "Infrastructure Team Lead, Telecom Firm"
     }
   ];
 

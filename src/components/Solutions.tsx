@@ -1,37 +1,47 @@
 import React from 'react';
-import { Database, Globe, Cloud, Settings, Brain, Smartphone } from 'lucide-react';
+import { Database, Globe, Cloud, Settings, Brain, Smartphone, Cog, Shield, GitBranch, Server } from 'lucide-react';
 
 const Solutions = () => {
   const solutions = [
     {
-      title: "Data Engineering & Analytics",
-      icon: Database,
-      description: "Ingest, transform and activate data with real-time pipelines."
+      title: "Application & Process Integration",
+      icon: Cog,
+      description: "SOA, Microservices, Apache Camel, Red Hat Fuse/PAM, Camunda, Oracle AIA, webMethods, Tibco, Mulesoft integration solutions."
     },
     {
       title: "API Management & Microservices",
       icon: Globe,
-      description: "Design and govern robust API ecosystems and service meshes."
+      description: "APIGEE, Red Hat 3Scale, webMethods API gateways with OpenAPI implementation and developer portals."
     },
     {
-      title: "Cloud-Native Platforms",
+      title: "Data Engineering & Science",
+      icon: Database,
+      description: "Big Data, Data Science, Python, AI/ML, Snowflake, data lakes, and master data platform setup."
+    },
+    {
+      title: "AI/MLOps & Machine Learning",
+      icon: Brain,
+      description: "AI solutions for business use cases, MLOps pipelines, generative AI, and advanced analytics implementation."
+    },
+    {
+      title: "Cloud Solutions & Infrastructure",
       icon: Cloud,
-      description: "Deploy scalable infrastructure across AWS, Azure, GCP."
+      description: "AWS, Azure, OCI, GCP, Oracle Integration Cloud, IaaS, PaaS, SaaS offerings with cloud-native implementations."
     },
     {
       title: "DevOps & SRE",
       icon: Settings,
-      description: "CI/CD pipelines, observability, and SLOs that scale."
+      description: "Kubernetes, OpenShift, Docker, CI/CD pipelines, deployment automation, and site reliability engineering."
     },
     {
-      title: "MLOps & AI Engineering",
-      icon: Brain,
-      description: "Automate ML lifecycle—from model training to monitoring."
+      title: "Enterprise Solutions",
+      icon: Server,
+      description: "Oracle Fusion/EBS, Oracle Cloud Infrastructure, Siebel, Oracle BRM, OSM, UIM, and BSS/OSS transformations."
     },
     {
       title: "Web & Mobile Development",
       icon: Smartphone,
-      description: "Cross-platform apps built with speed and scalability."
+      description: "Full Stack (Java/.Net), Java Spring Boot, Salesforce, React, Angular development with modern frameworks."
     }
   ];
 

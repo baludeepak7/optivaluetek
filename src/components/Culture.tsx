@@ -7,27 +7,39 @@ const Culture = () => {
   
   const careers = [
     {
-      title: "Senior React Developer",
+      title: "Java Spring Boot Microservices Developer",
       location: "Remote",
       experience: "5+ years",
       type: "Full-time"
     },
     {
-      title: "Cloud Engineer (AWS)",
+      title: "BSS/OSS Telecom Consultant",
       location: "Bangalore",
+      experience: "6+ years",
+      type: "Full-time"
+    },
+    {
+      title: "API Management Specialist (APIGEE/3Scale)",
+      location: "Remote",
       experience: "4+ years",
       type: "Full-time"
     },
     {
-      title: "Data Scientist (NLP)",
-      location: "Remote",
-      experience: "3+ years",
+      title: "DevOps Engineer (Kubernetes/OpenShift)",
+      location: "Remote/Hybrid",
+      experience: "4+ years",
       type: "Full-time"
     },
     {
-      title: "Product Owner",
-      location: "Texas",
-      experience: "6+ years",
+      title: "Oracle Integration Cloud Consultant",
+      location: "India/Remote",
+      experience: "5+ years",
+      type: "Full-time"
+    },
+    {
+      title: "Data Science/AI-ML Engineer",
+      location: "Global",
+      experience: "3+ years",
       type: "Full-time"
     }
   ];

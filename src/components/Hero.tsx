@@ -57,13 +57,13 @@ const Hero = () => {
               className="text-5xl lg:text-6xl font-bold mb-6 leading-tight"
               style={{ fontFamily: 'Poppins' }}
             >
-              Accelerating Digital Modernization with Human-Centered Engineering
+              Digital Transformation & Enterprise Modernization Specialists
             </h1>
             <p 
               className="text-xl lg:text-2xl mb-8 opacity-90"
               style={{ fontFamily: 'Roboto' }}
             >
-              Legacy transformation, API-first microservices, cloud-native apps, and intelligent operations.
+              Application & Process Integration • API Management • Data Engineering • AI/MLOps • DevOps & SRE • Cloud Solutions
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">

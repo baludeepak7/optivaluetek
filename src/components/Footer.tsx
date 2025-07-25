@@ -32,8 +32,15 @@ const Footer = () => {
                 >
                   OptiValueTek
                 </h3>
-                <p className="text-sm text-gray-400">Data & API-Driven Enterprise Modernization</p>
+                <p className="text-sm text-gray-400">Digital Transformation & Enterprise Modernization</p>
               </div>
+            </div>
+            <div className="space-y-2 text-sm text-gray-300">
+              <p>📧 contact@optivaluetek.com</p>
+              <p>📱 WhatsApp: +91 90355 10431</p>
+              <p>🇺🇸 USA: +1 404 390 5281</p>
+              <p>🇮🇳 India: +91 90355 10431</p>
+              <p>🇦🇺 Australia: +61 432 111 764</p>
             </div>
           </div>
 
@@ -46,16 +53,15 @@ const Footer = () => {
               Offices
             </h4>
             <ul className="space-y-3">
-              {offices.map((office, index) => (
-                <li 
-                  key={index} 
-                  className="text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer"
-                  style={{ fontFamily: 'Inter' }}
-                >
-                  {office}
-                </li>
-              ))}
+              <li className="text-gray-300" style={{ fontFamily: 'Inter' }}>🇮🇳 Bengaluru, India</li>
+              <li className="text-gray-300" style={{ fontFamily: 'Inter' }}>🇺🇸 Texas, USA</li>
+              <li className="text-gray-300" style={{ fontFamily: 'Inter' }}>🇦🇺 NSW, Australia</li>
+              <li className="text-gray-300" style={{ fontFamily: 'Inter' }}>🇦🇪 UAE</li>
             </ul>
+            <div className="mt-4">
+              <h5 className="font-semibold text-white mb-2">Project Delivery</h5>
+              <p className="text-sm text-gray-400">Malaysia • South Korea • Europe • Middle East • UK • US • India • ANZ</p>
+            </div>
           </div>
 
           {/* Links */}
