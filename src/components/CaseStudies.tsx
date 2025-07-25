@@ -88,7 +88,7 @@ const CaseStudies = () => {
   ];
 
   const toggleCard = (index: number) => {
-    setExpandedCard(expandedCard === index ? null : index);
+    setExpandedCard(prev => prev === index ? null : index);
   };
 
   return (
