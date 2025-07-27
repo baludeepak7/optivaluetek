@@ -34,7 +34,7 @@ const HomePage = () => (
 
 function App() {
   return (
-    <Router>
+    <Router basename="/optivaluetek">
       <div className="min-h-screen">
         <Header />
         <Routes>
