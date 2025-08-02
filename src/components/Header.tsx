@@ -54,7 +54,8 @@ const Header = () => {
         { name: 'Technology Blogs', href: '#insights' }
       ]
     },
-    { name: 'Careers', href: '#careers' }
+    { name: 'Careers', href: '#careers' },
+    { name: 'Investor Corner', href: '/investor-corner' }
   ];
 
   const scrollToSection = (href: string) => {
