@@ -7,7 +7,11 @@ const InvestorCorner = () => {
 
   const openPDF = (filename: string) => {
     // Open dummy PDF in new tab
+<<<<<<< HEAD
     window.open(` /optivaluetek/investor-corner/${filename}.pdf`, '_blank');
+=======
+    window.open(`/pdfs/${filename}.pdf`, '_blank');
+>>>>>>> f6e5f8eac0b65a77758fe77be24c7c4f0739525b
   };
 
   const toggleSection = (section: string) => {
@@ -73,7 +77,11 @@ const InvestorCorner = () => {
   ];
 
   return (
+<<<<<<< HEAD
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black pt-20">
+=======
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+>>>>>>> f6e5f8eac0b65a77758fe77be24c7c4f0739525b
       {/* Header */}
       <div className="bg-gray-800/50 backdrop-blur-sm border-b border-gray-700/50">
         <div className="container mx-auto px-4 py-6">
@@ -149,9 +157,15 @@ const InvestorCorner = () => {
             </div>
             <div className="grid md:grid-cols-3 gap-4">
               {[
+<<<<<<< HEAD
                 { name: "Draft Red Herring Prospectus (DRHP)", file: "Initial Public Offer/DRHP-V-Final-27-03-2025" },
                 { name: "Abridged Prospectus (Coming Soon)", file: "Initial Public Offer/abridged-prospectus" },
                 { name: "Red Herring Prospectus (RHP)", file: "Initial Public Offer/rhp" }
+=======
+                { name: "Draft Red Herring Prospectus (DRHP)", file: "drhp" },
+                { name: "Abridged Prospectus (Coming Soon)", file: "abridged-prospectus" },
+                { name: "Red Herring Prospectus (RHP)", file: "rhp" }
+>>>>>>> f6e5f8eac0b65a77758fe77be24c7c4f0739525b
               ].map((doc, index) => (
                 <button
                   key={index}
@@ -179,7 +193,11 @@ const InvestorCorner = () => {
               {policies.map((policy, index) => (
                 <button
                   key={index}
+<<<<<<< HEAD
                   onClick={() => openPDF('Policies/'+policy.toLowerCase().replace(/\s+/g, '-'))}
+=======
+                  onClick={() => openPDF(policy.toLowerCase().replace(/\s+/g, '-'))}
+>>>>>>> f6e5f8eac0b65a77758fe77be24c7c4f0739525b
                   className="group bg-gray-700/30 backdrop-blur-sm border border-gray-600/50 rounded-2xl p-4 hover:border-gray-500/50 transition-all duration-300 hover:shadow-lg text-left"
                 >
                   <div className="flex items-center gap-3">
@@ -226,7 +244,11 @@ const InvestorCorner = () => {
               <h3 className="text-2xl font-bold text-white">Shareholder Information</h3>
             </div>
             <button
+<<<<<<< HEAD
               onClick={() => openPDF('Shareholder Information/sebi-circular')}
+=======
+              onClick={() => openPDF('sebi-circular')}
+>>>>>>> f6e5f8eac0b65a77758fe77be24c7c4f0739525b
               className="group bg-gray-700/30 backdrop-blur-sm border border-gray-600/50 rounded-2xl p-4 hover:border-gray-500/50 transition-all duration-300 hover:shadow-lg"
             >
               <div className="flex items-center gap-3">
@@ -329,7 +351,11 @@ const InvestorCorner = () => {
                   {financialYears.map((year, index) => (
                     <button
                       key={index}
+<<<<<<< HEAD
                       onClick={() => openPDF(`financial-statements/${year.toLowerCase().replace(/\s+/g, '-')}`)}
+=======
+                      onClick={() => openPDF(`financial-statements-${year.toLowerCase().replace(/\s+/g, '-')}`)}
+>>>>>>> f6e5f8eac0b65a77758fe77be24c7c4f0739525b
                       className="group bg-gray-700/30 backdrop-blur-sm border border-gray-600/50 rounded-2xl p-4 hover:border-gray-500/50 transition-all duration-300 hover:shadow-lg"
                     >
                       <div className="flex items-center gap-3">
@@ -348,7 +374,11 @@ const InvestorCorner = () => {
                   {financialYears.map((year, index) => (
                     <button
                       key={index}
+<<<<<<< HEAD
                       onClick={() => openPDF(`annual-report/${year.toLowerCase().replace(/\s+/g, '-')}`)}
+=======
+                      onClick={() => openPDF(`annual-report-${year.toLowerCase().replace(/\s+/g, '-')}`)}
+>>>>>>> f6e5f8eac0b65a77758fe77be24c7c4f0739525b
                       className="group bg-gray-700/30 backdrop-blur-sm border border-gray-600/50 rounded-2xl p-4 hover:border-gray-500/50 transition-all duration-300 hover:shadow-lg"
                     >
                       <div className="flex items-center gap-3">
@@ -399,7 +429,11 @@ const InvestorCorner = () => {
               <div>
                 <h4 className="text-xl font-bold text-cyan-400 mb-4">AGM Notice</h4>
                 <button
+<<<<<<< HEAD
                   onClick={() => openPDF('agm/agm-notice-2023-24')}
+=======
+                  onClick={() => openPDF('agm-notice-2023-24')}
+>>>>>>> f6e5f8eac0b65a77758fe77be24c7c4f0739525b
                   className="group bg-gray-700/30 backdrop-blur-sm border border-gray-600/50 rounded-2xl p-4 hover:border-gray-500/50 transition-all duration-300 hover:shadow-lg"
                 >
                   <div className="flex items-center gap-3">
@@ -414,8 +448,13 @@ const InvestorCorner = () => {
                 <h4 className="text-xl font-bold text-pink-400 mb-4">MOA & AOA</h4>
                 <div className="grid md:grid-cols-2 gap-4">
                   {[
+<<<<<<< HEAD
                     { name: "AOA", file: "aoa/aoa" },
                     { name: "MOA", file: "moa/moa" }
+=======
+                    { name: "AOA", file: "aoa" },
+                    { name: "MOA", file: "moa" }
+>>>>>>> f6e5f8eac0b65a77758fe77be24c7c4f0739525b
                   ].map((doc, index) => (
                     <button
                       key={index}
@@ -447,7 +486,11 @@ const InvestorCorner = () => {
               <div>
                 <h4 className="text-xl font-bold text-teal-400 mb-4">General Meeting</h4>
                 <button
+<<<<<<< HEAD
                   onClick={() => openPDF('general-meeting/general-meeting-fy-2023-24')}
+=======
+                  onClick={() => openPDF('general-meeting-fy-2023-24')}
+>>>>>>> f6e5f8eac0b65a77758fe77be24c7c4f0739525b
                   className="group bg-gray-700/30 backdrop-blur-sm border border-gray-600/50 rounded-2xl p-4 hover:border-gray-500/50 transition-all duration-300 hover:shadow-lg"
                 >
                   <div className="flex items-center gap-3">
@@ -464,7 +507,11 @@ const InvestorCorner = () => {
                   {boardMeetings.map((meeting, index) => (
                     <button
                       key={index}
+<<<<<<< HEAD
                       onClick={() => openPDF(`board-meeting/${meeting}`)}
+=======
+                      onClick={() => openPDF(`board-meeting-${meeting}`)}
+>>>>>>> f6e5f8eac0b65a77758fe77be24c7c4f0739525b
                       className="group bg-gray-700/30 backdrop-blur-sm border border-gray-600/50 rounded-2xl p-4 hover:border-gray-500/50 transition-all duration-300 hover:shadow-lg"
                     >
                       <div className="flex items-center gap-3">
@@ -521,7 +568,11 @@ const InvestorCorner = () => {
               {materialContracts.map((contract, index) => (
                 <button
                   key={index}
+<<<<<<< HEAD
                   onClick={() => openPDF('material-contracts/'+contract.toLowerCase().replace(/\s+/g, '-'))}
+=======
+                  onClick={() => openPDF(contract.toLowerCase().replace(/\s+/g, '-'))}
+>>>>>>> f6e5f8eac0b65a77758fe77be24c7c4f0739525b
                   className="group bg-gray-700/30 backdrop-blur-sm border border-gray-600/50 rounded-2xl p-4 hover:border-gray-500/50 transition-all duration-300 hover:shadow-lg text-left"
                 >
                   <div className="flex items-center gap-3">
