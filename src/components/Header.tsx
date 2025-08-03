@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
+
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -54,7 +55,8 @@ const Header = () => {
         { name: 'Technology Blogs', href: '#insights' }
       ]
     },
-    { name: 'Careers', href: '#careers' }
+    { name: 'Careers', href: '#careers' },
+    { name: 'Investor Corner', href: '/investor-corner' }
   ];
 
   const scrollToSection = (href: string) => {
@@ -72,9 +74,12 @@ const Header = () => {
     setActiveDropdown(null);
   };
 
+  const navigate = useNavigate();
   const handleNavigation = (href: string) => {
     if (href.startsWith('/')) {
       // This will be handled by React Router
+      console.log(`Navigating to ${href}`);
+      navigate(href);
       return;
     } else {
       scrollToSection(href);
@@ -91,23 +96,13 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <div className="relative">
-              <Link to="/">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-                  <span className="text-white font-bold text-xl">O</span>
-                </div>
-                <div className="absolute -inset-1 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl blur opacity-30 animate-pulse" />
-              </Link>
-            </div>
+          
             <div>
               <Link to="/">
                 <h1 className="text-xl font-bold text-white">
-                  OptiValueTek
+                  <img src="/optivaluetek/logo/optivaluetek.png" alt="OptiValueTek Logo" className="h-12" />
                 </h1>
               </Link>
-              <p className="text-xs text-blue-400 leading-tight">
-                Digital Transformation & Enterprise Modernization
-              </p>
             </div>
           </div>
 

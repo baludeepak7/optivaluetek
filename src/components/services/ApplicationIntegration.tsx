@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Code, Database, Globe, Settings, CheckCircle, ArrowRight, Play, Download } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const ApplicationIntegration = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -62,14 +63,14 @@ const ApplicationIntegration = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black pt-20">
       {/* Header */}
       <div className="bg-gray-800/50 backdrop-blur-sm border-b border-gray-700/50">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center gap-4">
-            <button className="p-2 hover:bg-gray-700/50 rounded-xl transition-colors duration-300">
+            <Link to="/" className="p-2 hover:bg-gray-700/50 rounded-xl transition-colors duration-300">
               <ArrowLeft size={24} className="text-white" />
-            </button>
+            </Link>
             <div>
               <h1 className="text-3xl font-bold text-white">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">

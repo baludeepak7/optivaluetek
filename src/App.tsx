@@ -18,6 +18,7 @@ import DevOpsSRE from './components/services/DevOpsSRE';
 import AIMLOps from './components/services/AIMLOps';
 import EnterpriseSolutions from './components/services/EnterpriseSolutions';
 import WebMobileDev from './components/services/WebMobileDev';
+import InvestorCorner from './components/InvestorCorner';
 
 const HomePage = () => (
   <>
@@ -47,6 +48,7 @@ function App() {
           <Route path="/services/ai-mlops" element={<AIMLOps />} />
           <Route path="/services/enterprise-solutions" element={<EnterpriseSolutions />} />
           <Route path="/services/web-mobile-dev" element={<WebMobileDev />} />
+          <Route path="/investor-corner" element={<InvestorCorner />} />
         </Routes>
         <Footer />
       </div>
