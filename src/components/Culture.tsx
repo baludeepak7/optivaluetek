@@ -326,87 +326,14 @@ ${formData.name}`;
             </span>
           </h3>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-            {allJobs.map((job, index) => {
-              const IconComponent = getIconComponent(job.icon);
-              return (
-                <div
-                  key={index}
-                  className="group relative bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-2xl overflow-hidden hover:border-gray-600/50 transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
-                >
-                  {/* Gradient Background */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${job.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-2xl`} />
-                  
-                  <div className="relative p-6">
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${job.gradient} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                        <IconComponent size={16} className="text-white" />
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="text-lg font-bold text-white mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300 leading-tight">
-                          {job.title}
-                        </h4>
-                        <p className="text-gray-400 text-xs mb-3">
-                          {job.department} • {job.type}
-                        </p>
-                      </div>
-                    </div>
-
-                    <p className="text-gray-300 text-sm mb-4 leading-relaxed line-clamp-2">
-                      {job.shortDescription}
-                    </p>
-                    
-                    {/* Job Details */}
-                    <div className="grid grid-cols-2 gap-2 mb-4 text-xs text-gray-400">
-                      <div className="flex items-center gap-1">
-                        <MapPin size={12} />
-                        {job.location}
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Clock size={12} />
-                        {job.experience}
-                      </div>
-                    </div>
-
-                    {/* Skills */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {job.skills.slice(0, 3).map((skill, skillIndex) => (
-                        <span
-                          key={skillIndex}
-                          className="px-2 py-1 bg-gray-600/50 text-gray-300 text-xs rounded-full border border-gray-500/50"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                      {job.skills.length > 3 && (
-                        <span className="px-2 py-1 bg-gray-600/50 text-gray-400 text-xs rounded-full border border-gray-500/50">
-                          +{job.skills.length - 3}
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Action Buttons */}
-                    <div className="flex gap-2">
-                      <Link
-                        to={`/job/${job.id}`}
-                        className="flex-1 bg-gray-600/50 backdrop-blur-sm border border-gray-500/50 text-white px-3 py-2 rounded-lg hover:bg-gray-500/50 hover:border-gray-400/50 transition-all duration-300 font-medium text-center text-sm flex items-center justify-center gap-1"
-                      >
-                        <Eye size={14} />
-                        Details
-                      </Link>
-                      <button 
-                        onClick={() => handleApplyClick(job.id, job.title)}
-                        className={`flex-1 bg-gradient-to-r ${job.gradient} text-white px-3 py-2 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105 font-medium text-sm flex items-center justify-center gap-1`}
-                      >
-                        <Send size={14} />
-                        Apply
-                      </button>
-                    </div>
-
-                  </div>
-                </div>
-              );
-            })}
+          <div className="text-center">
+            <Link 
+              to="/careers"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-600 to-blue-600 text-white px-8 py-4 rounded-xl hover:from-cyan-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 font-semibold text-lg shadow-2xl"
+            >
+              View All {featuredJobs.length + allJobs.length} Open Positions
+              <ArrowRight size={20} />
+            </Link>
           </div>
         </div>
 

@@ -12,6 +12,8 @@ import Testimonials from './components/Testimonials';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import InvestorCorner from './components/InvestorCorner';
+import Careers from './components/Careers';
+import JobDetails from './components/JobDetails';
 
 // Services
 import ApplicationIntegration from './components/services/ApplicationIntegration';
@@ -103,7 +105,7 @@ const CareersPage = () => (
       />
       <link rel="canonical" href="https://www.optivaluetek.com/careers" />
     </Helmet>
-    <Culture />
+    <Careers />
   </>
 );
 
@@ -159,6 +161,9 @@ function App() {
             <Route path="/services/ai-mlops" element={<AIMLOps />} />
             <Route path="/services/enterprise-solutions" element={<EnterpriseSolutions />} />
             <Route path="/services/web-mobile-dev" element={<WebMobileDev />} />
+
+            {/* Job Details */}
+            <Route path="/job/:jobId" element={<JobDetails />} />
 
             {/* Job Details */}
             <Route path="/job/:jobId" element={<JobDetails />} />
