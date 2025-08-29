@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { MapPin, Clock, Users, Heart, X, Send, ChevronDown, ChevronUp, Code, Database, Cloud, Cpu, Globe, Smartphone, Settings, Brain } from 'lucide-react';
+import { MapPin, Clock, Users, Heart, X, Send, ChevronDown, ChevronUp, Code, Database, Cloud, Cpu, Globe, Smartphone, Settings, Brain, ArrowRight, TrendingUp, Building2, Calendar, Eye } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import jobsData from '../config/jobs.json';
 
 const Culture = () => {
   const [showApplicationForm, setShowApplicationForm] = useState(false);
   const [selectedJob, setSelectedJob] = useState<string>('');
-  const [showAllJobs, setShowAllJobs] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -16,7 +17,7 @@ const Culture = () => {
     gdprConsent: false
   });
 
-  const handleApplyClick = (jobTitle: string) => {
+  const handleApplyClick = (jobId: string, jobTitle: string) => {
     setSelectedJob(jobTitle);
     setShowApplicationForm(true);
   };
@@ -65,6 +66,20 @@ ${formData.name}`;
     }));
   };
 
+  // Get icon component by name
+  const getIconComponent = (iconName: string) => {
+    const icons: { [key: string]: any } = {
+      Code,
+      Database,
+      Globe,
+      Brain,
+      Settings,
+      Smartphone,
+      Building2
+    };
+    return icons[iconName] || Building2;
+  };
+
   const values = [
     { name: 'Innovation', icon: Brain, description: 'Pushing boundaries with cutting-edge solutions' },
     { name: 'Ownership', icon: Users, description: 'Taking responsibility for exceptional outcomes' },
@@ -79,94 +94,8 @@ ${formData.name}`;
     { name: 'Team Offsites', icon: Users, description: 'Quarterly team building and company retreats' }
   ];
   
-  const featuredCareers = [
-    {
-      title: "Java Spring Boot Microservices Developer",
-      location: "Remote",
-      experience: "5+ years",
-      type: "Full-time",
-      description: "Design and develop microservices using Java Spring Boot, work with cloud-native technologies.",
-      icon: Code,
-      gradient: "from-blue-600 to-cyan-500",
-      skills: ["Java", "Spring Boot", "Microservices", "Docker"]
-    },
-    {
-      title: "BSS/OSS Telecom Consultant",
-      location: "Bangalore",
-      experience: "6+ years",
-      type: "Full-time",
-      description: "Lead telecom BSS/OSS implementations, Oracle BRM, OSM, UIM expertise required.",
-      icon: Smartphone,
-      gradient: "from-purple-600 to-pink-500",
-      skills: ["Oracle BRM", "BSS/OSS", "Telecom", "OSM"]
-    },
-    {
-      title: "API Management Specialist (APIGEE/3Scale)",
-      location: "Remote",
-      experience: "4+ years",
-      type: "Full-time",
-      description: "Implement and manage API gateways, developer portals, and API lifecycle management.",
-      icon: Globe,
-      gradient: "from-green-600 to-teal-500",
-      skills: ["APIGEE", "3Scale", "API Gateway", "OpenAPI"]
-    }
-  ];
-
-  const allCareers = [
-    ...featuredCareers,
-    {
-      title: "DevOps Engineer (Kubernetes/OpenShift)",
-      location: "Remote/Hybrid",
-      experience: "4+ years",
-      type: "Full-time",
-      description: "Manage container orchestration, CI/CD pipelines, and cloud infrastructure.",
-      icon: Settings,
-      gradient: "from-orange-600 to-red-500",
-      skills: ["Kubernetes", "OpenShift", "CI/CD", "Docker"]
-    },
-    {
-      title: "Oracle Integration Cloud Consultant",
-      location: "India/Remote",
-      experience: "5+ years",
-      type: "Full-time",
-      description: "Design and implement Oracle Integration Cloud solutions for enterprise clients.",
-      icon: Database,
-      gradient: "from-indigo-600 to-purple-500",
-      skills: ["Oracle OIC", "Integration", "Cloud", "SOA"]
-    },
-    {
-      title: "Data Science/AI-ML Engineer",
-      location: "Global",
-      experience: "3+ years",
-      type: "Full-time",
-      description: "Develop AI/ML models, implement MLOps pipelines, and create data-driven solutions.",
-      icon: Brain,
-      gradient: "from-pink-600 to-rose-500",
-      skills: ["Python", "ML", "TensorFlow", "MLOps"]
-    },
-    {
-      title: "Full Stack Developer (Java/.NET)",
-      location: "Remote",
-      experience: "3+ years",
-      type: "Full-time",
-      description: "Develop end-to-end applications using Java/.NET, Angular, React technologies.",
-      icon: Code,
-      gradient: "from-cyan-600 to-blue-500",
-      skills: ["Java", ".NET", "React", "Angular"]
-    },
-    {
-      title: "Cloud Solutions Architect (AWS/Azure)",
-      location: "Global",
-      experience: "6+ years",
-      type: "Full-time",
-      description: "Design cloud architectures, lead migration projects, and optimize cloud costs.",
-      icon: Cloud,
-      gradient: "from-teal-600 to-green-500",
-      skills: ["AWS", "Azure", "Architecture", "Migration"]
-    }
-  ];
-
-  const displayedJobs = showAllJobs ? allCareers : featuredCareers;
+  const featuredJobs = jobsData.featuredJobs;
+  const allJobs = jobsData.allJobs;
 
   return (
     <section id="careers" className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black relative overflow-hidden">
@@ -277,98 +206,207 @@ ${formData.name}`;
 
           {/* Open Positions */}
           <div className="bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8">
-            <div className="flex items-center justify-between mb-8">
-              <h3 className="text-3xl font-bold text-white">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">
-                  {showAllJobs ? 'All Open Positions' : 'Featured Positions'}
-                </span>
-              </h3>
-              <span className="px-3 py-1 bg-blue-600/20 text-blue-300 text-sm rounded-full border border-blue-400/30">
-                {showAllJobs ? `${allCareers.length} positions` : `${featuredCareers.length} of ${allCareers.length} positions`}
+            <h3 className="text-3xl font-bold text-white mb-8 text-center">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">
+                Featured Positions
               </span>
-            </div>
+            </h3>
             
-            <div className="space-y-6 max-h-96 overflow-y-auto custom-scrollbar">
-              {displayedJobs.map((job, index) => {
-                const IconComponent = job.icon;
+            <div className="grid gap-6">
+              {featuredJobs.map((job, index) => {
+                const IconComponent = getIconComponent(job.icon);
                 return (
                   <div
                     key={index}
-                    className="group relative bg-gray-700/30 backdrop-blur-sm border border-gray-600/50 rounded-2xl p-6 hover:border-gray-500/50 transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                    className="group relative bg-gray-700/30 backdrop-blur-sm border border-gray-600/50 rounded-2xl overflow-hidden hover:border-gray-500/50 transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                   >
                     {/* Gradient Background */}
                     <div className={`absolute inset-0 bg-gradient-to-br ${job.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-2xl`} />
                     
-                    <div className="relative">
-                      <div className="flex items-start gap-4 mb-4">
+                    <div className="relative p-6">
+                      <div className="flex items-start gap-6 mb-6">
                         <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${job.gradient} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                           <IconComponent size={20} className="text-white" />
                         </div>
                         <div className="flex-1">
-                          <h4 className="text-xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300">
-                            {job.title}
-                          </h4>
-                          <p className="text-gray-300 text-sm mb-3 leading-relaxed">
-                            {job.description}
+                          <div className="flex items-start justify-between mb-3">
+                            <h4 className="text-xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300">
+                              {job.title}
+                            </h4>
+                            <span className={`px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r ${job.gradient} text-white`}>
+                              {job.type}
+                            </span>
+                          </div>
+                          <p className="text-gray-300 text-sm mb-4 leading-relaxed">
+                            {job.shortDescription}
                           </p>
+                          
+                          {/* Job Meta Info */}
+                          <div className="grid grid-cols-2 gap-4 mb-4">
+                            <div className="flex items-center gap-2 text-sm text-gray-400">
+                              <MapPin size={14} />
+                              {job.location}
+                            </div>
+                            <div className="flex items-center gap-2 text-sm text-gray-400">
+                              <Clock size={14} />
+                              {job.experience}
+                            </div>
+                            <div className="flex items-center gap-2 text-sm text-gray-400">
+                              <Building2 size={14} />
+                              {job.department}
+                            </div>
+                            <div className="flex items-center gap-2 text-sm text-gray-400">
+                              <Calendar size={14} />
+                              Apply by {new Date(job.applicationDeadline).toLocaleDateString()}
+                            </div>
+                          </div>
                         </div>
                       </div>
 
                       {/* Skills */}
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {job.skills.map((skill, skillIndex) => (
-                          <span
-                            key={skillIndex}
-                            className="px-3 py-1 bg-gray-600/50 text-gray-300 text-xs rounded-full border border-gray-500/50"
-                          >
-                            {skill}
-                          </span>
-                        ))}
+                      <div className="mb-6">
+                        <div className="flex flex-wrap gap-2">
+                          {job.skills.slice(0, 4).map((skill, skillIndex) => (
+                            <span
+                              key={skillIndex}
+                              className="px-3 py-1 bg-gray-600/50 text-gray-300 text-xs rounded-full border border-gray-500/50"
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                          {job.skills.length > 4 && (
+                            <span className="px-3 py-1 bg-gray-600/50 text-gray-400 text-xs rounded-full border border-gray-500/50">
+                              +{job.skills.length - 4} more
+                            </span>
+                          )}
+                        </div>
                       </div>
 
-                      {/* Job Details */}
-                      <div className="flex flex-wrap gap-4 mb-4 text-sm text-gray-400">
-                        <div className="flex items-center gap-1">
-                          <MapPin size={14} />
-                          {job.location}
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Clock size={14} />
-                          {job.experience}
-                        </div>
-                        <span className={`px-3 py-1 rounded-full text-xs bg-gradient-to-r ${job.gradient} text-white`}>
-                          {job.type}
-                        </span>
+                      {/* Action Buttons */}
+                      <div className="flex gap-3">
+                        <Link
+                          to={`/job/${job.id}`}
+                          className="flex-1 bg-gray-600/50 backdrop-blur-sm border border-gray-500/50 text-white px-4 py-3 rounded-xl hover:bg-gray-500/50 hover:border-gray-400/50 transition-all duration-300 font-semibold text-center flex items-center justify-center gap-2"
+                        >
+                          <Eye size={16} />
+                          View Details
+                        </Link>
+                        <button 
+                          onClick={() => handleApplyClick(job.id, job.title)}
+                          className={`flex-1 bg-gradient-to-r ${job.gradient} text-white px-4 py-3 rounded-xl hover:shadow-lg transition-all duration-300 transform hover:scale-105 font-semibold flex items-center justify-center gap-2`}
+                        >
+                          <Send size={16} />
+                          Quick Apply
+                        </button>
                       </div>
-
-                      {/* Apply Button */}
-                      <button 
-                        onClick={() => handleApplyClick(job.title)}
-                        className={`group/btn w-full bg-gradient-to-r ${job.gradient} text-white px-6 py-3 rounded-xl hover:shadow-lg transition-all duration-300 transform hover:scale-105 font-semibold flex items-center justify-center gap-2`}
-                      >
-                        <Send size={16} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
-                        Apply Now
-                      </button>
                     </div>
                   </div>
                 );
               })}
             </div>
             
-            <button 
-              onClick={() => setShowAllJobs(!showAllJobs)}
-              className="mt-6 w-full bg-gray-700/50 backdrop-blur-sm border border-gray-600/50 text-white px-8 py-3 rounded-xl hover:bg-gray-600/50 hover:border-gray-500/50 transition-all duration-300 font-semibold flex items-center justify-center gap-2"
-            >
-              {showAllJobs ? (
-                <>
-                  Show Featured Roles <ChevronUp size={20} />
-                </>
-              ) : (
-                <>
-                  View All {allCareers.length} Roles <ChevronDown size={20} />
-                </>
-              )}
-            </button>
+            {/* View All Jobs Link */}
+            <div className="mt-8 text-center">
+              <Link 
+                to="/careers"
+                className="inline-flex items-center gap-2 bg-gray-700/50 backdrop-blur-sm border border-gray-600/50 text-white px-8 py-3 rounded-xl hover:bg-gray-600/50 hover:border-gray-500/50 transition-all duration-300 font-semibold"
+              >
+                View All {featuredJobs.length + allJobs.length} Open Positions
+                <ArrowRight size={20} />
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* All Jobs Section */}
+        <div className="mt-16">
+          <h3 className="text-3xl font-bold text-white mb-8 text-center">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
+              More Opportunities
+            </span>
+          </h3>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+            {allJobs.map((job, index) => {
+              const IconComponent = getIconComponent(job.icon);
+              return (
+                <div
+                  key={index}
+                  className="group relative bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-2xl overflow-hidden hover:border-gray-600/50 transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                >
+                  {/* Gradient Background */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${job.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-2xl`} />
+                  
+                  <div className="relative p-6">
+                    <div className="flex items-start gap-4 mb-4">
+                      <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${job.gradient} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                        <IconComponent size={16} className="text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="text-lg font-bold text-white mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300 leading-tight">
+                          {job.title}
+                        </h4>
+                        <p className="text-gray-400 text-xs mb-3">
+                          {job.department} • {job.type}
+                        </p>
+                      </div>
+                    </div>
+
+                    <p className="text-gray-300 text-sm mb-4 leading-relaxed line-clamp-2">
+                      {job.shortDescription}
+                    </p>
+                    
+                    {/* Job Details */}
+                    <div className="grid grid-cols-2 gap-2 mb-4 text-xs text-gray-400">
+                      <div className="flex items-center gap-1">
+                        <MapPin size={12} />
+                        {job.location}
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Clock size={12} />
+                        {job.experience}
+                      </div>
+                    </div>
+
+                    {/* Skills */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {job.skills.slice(0, 3).map((skill, skillIndex) => (
+                        <span
+                          key={skillIndex}
+                          className="px-2 py-1 bg-gray-600/50 text-gray-300 text-xs rounded-full border border-gray-500/50"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                      {job.skills.length > 3 && (
+                        <span className="px-2 py-1 bg-gray-600/50 text-gray-400 text-xs rounded-full border border-gray-500/50">
+                          +{job.skills.length - 3}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="flex gap-2">
+                      <Link
+                        to={`/job/${job.id}`}
+                        className="flex-1 bg-gray-600/50 backdrop-blur-sm border border-gray-500/50 text-white px-3 py-2 rounded-lg hover:bg-gray-500/50 hover:border-gray-400/50 transition-all duration-300 font-medium text-center text-sm flex items-center justify-center gap-1"
+                      >
+                        <Eye size={14} />
+                        Details
+                      </Link>
+                      <button 
+                        onClick={() => handleApplyClick(job.id, job.title)}
+                        className={`flex-1 bg-gradient-to-r ${job.gradient} text-white px-3 py-2 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105 font-medium text-sm flex items-center justify-center gap-1`}
+                      >
+                        <Send size={14} />
+                        Apply
+                      </button>
+                    </div>
+
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
 
@@ -548,23 +586,6 @@ ${formData.name}`;
           </div>
         )}
       </div>
-
-      <style jsx>{`
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: rgba(55, 65, 81, 0.3);
-          border-radius: 3px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
-          border-radius: 3px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: linear-gradient(to bottom, #2563eb, #7c3aed);
-        }
-      `}</style>
     </section>
   );
 };

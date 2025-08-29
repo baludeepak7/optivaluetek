@@ -160,6 +160,9 @@ function App() {
             <Route path="/services/enterprise-solutions" element={<EnterpriseSolutions />} />
             <Route path="/services/web-mobile-dev" element={<WebMobileDev />} />
 
+            {/* Job Details */}
+            <Route path="/job/:jobId" element={<JobDetails />} />
+
             {/* Additional pages */}
             <Route path="/company-overview" element={<CompanyOverview />} />
             <Route path="/about-us" element={<AboutUs />} />
