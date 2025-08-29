@@ -23,6 +23,13 @@ import AIMLOps from './components/services/AIMLOps';
 import EnterpriseSolutions from './components/services/EnterpriseSolutions';
 import WebMobileDev from './components/services/WebMobileDev';
 
+// Additional Pages
+import CompanyOverview from './components/CompanyOverview';
+import AboutUs from './components/AboutUs';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import TermsOfService from './components/TermsOfService';
+import Sitemap from './components/Sitemap';
+
 const HomePage = () => (
   <>
     <Helmet>
@@ -152,6 +159,13 @@ function App() {
             <Route path="/services/ai-mlops" element={<AIMLOps />} />
             <Route path="/services/enterprise-solutions" element={<EnterpriseSolutions />} />
             <Route path="/services/web-mobile-dev" element={<WebMobileDev />} />
+
+            {/* Additional pages */}
+            <Route path="/company-overview" element={<CompanyOverview />} />
+            <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/sitemap" element={<Sitemap />} />
           </Routes>
           <Footer />
         </div>

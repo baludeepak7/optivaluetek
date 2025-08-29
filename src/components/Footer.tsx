@@ -27,8 +27,8 @@ const Footer = () => {
   ];
 
   const industries: Array<{ name: string; href: string }> = [
-    { name: 'Company Overview', href: '#industries' },
-    { name: 'About us', href: '#industries' },
+    { name: 'Company Overview', href: '/company-overview' },
+    { name: 'About Us', href: '/about-us' },
     { name: 'Industry Expertise', href: '#industries' },
   ];
 
@@ -201,9 +201,9 @@ const Footer = () => {
 
           <div className="mt-4 text-center">
             <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
-              <button className="hover:text-white transition-colors duration-300">Privacy Policy</button>
-              <button className="hover:text-white transition-colors duration-300">Terms of Service</button>
-              <button className="hover:text-white transition-colors duration-300">Sitemap</button>
+              <Link to="/privacy-policy" className="hover:text-white transition-colors duration-300">Privacy Policy</Link>
+              <Link to="/terms-of-service" className="hover:text-white transition-colors duration-300">Terms of Service</Link>
+              <Link to="/sitemap" className="hover:text-white transition-colors duration-300">Sitemap</Link>
             </div>
           </div>
         </div>

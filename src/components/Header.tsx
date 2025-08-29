@@ -53,8 +53,8 @@ const Header = () => {
       href: '#industries',
       hasDropdown: true,
       dropdownItems: [
-        { name: 'Company Overview', href: '#industries' },
-        { name: 'About us', href: '#industries' },
+        { name: 'Company Overview', href: '/company-overview' },
+        { name: 'About Us', href: '/about-us' },
         { name: 'Industry Expertise', href: '#industries' }
       ]
     },
