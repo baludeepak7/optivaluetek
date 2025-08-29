@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, FileText, Shield, AlertTriangle, Scale, Globe, CheckCircle } from 'lucide-react';
+import { ArrowLeft, FileText, Shield, AlertTriangle, Scale, Globe, CheckCircle, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const TermsOfService = () => {
