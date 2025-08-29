@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, Shield, Eye, Lock, Users, Mail, FileText } from 'lucide-react';
+import { ArrowLeft, Shield, Eye, Lock, Users, Mail, FileText, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const PrivacyPolicy = () => {
