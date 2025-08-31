@@ -117,11 +117,10 @@ const Hero = () => {
                 {heroSlides[currentSlide].cta}
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
               </button>
-              {/* 
               <button className="group border-2 border-white/30 backdrop-blur-sm text-white px-8 py-4 rounded-lg hover:bg-white/10 hover:border-white/50 transition-all duration-300 font-semibold text-lg flex items-center justify-center gap-3">
                 <Play size={20} className="group-hover:scale-110 transition-transform duration-300" />
                 Watch Demo
-              </button> */}
+              </button>
             </div>
           </div>
 
