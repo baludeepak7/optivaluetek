@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Play, ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
+import { Play, ChevronLeft, ChevronRight, ArrowRight, X } from 'lucide-react';
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [showVideoModal, setShowVideoModal] = useState(false);
   
   useEffect(() => {
     setIsVisible(true);
@@ -53,8 +54,37 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const openVideoModal = () => {
+    setShowVideoModal(true);
+  };
+
+  const closeVideoModal = () => {
+    setShowVideoModal(false);
+  };
+
+  // Close modal on escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeVideoModal();
+      }
+    };
+
+    if (showVideoModal) {
+      document.addEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
+    };
+  }, [showVideoModal]);
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
+    <>
+      <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0">
         <div 
@@ -117,7 +147,10 @@ const Hero = () => {
                 {heroSlides[currentSlide].cta}
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
               </button>
-              <button className="group border-2 border-white/30 backdrop-blur-sm text-white px-8 py-4 rounded-lg hover:bg-white/10 hover:border-white/50 transition-all duration-300 font-semibold text-lg flex items-center justify-center gap-3">
+              <button 
+                onClick={openVideoModal}
+                className="group border-2 border-white/30 backdrop-blur-sm text-white px-8 py-4 rounded-lg hover:bg-white/10 hover:border-white/50 transition-all duration-300 font-semibold text-lg flex items-center justify-center gap-3"
+              >
                 <Play size={20} className="group-hover:scale-110 transition-transform duration-300" />
                 Watch Demo
               </button>
@@ -177,7 +210,61 @@ const Hero = () => {
           animation: marquee 30s linear infinite;
         }
       `}</style>
-    </section>
+      </section>
+
+      {/* Video Modal */}
+      {showVideoModal && (
+        <div className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="relative w-full max-w-6xl mx-auto">
+            {/* Close Button */}
+            <button
+              onClick={closeVideoModal}
+              className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors duration-300 p-2 hover:bg-white/10 rounded-full z-10"
+            >
+              <X size={32} />
+            </button>
+            
+            {/* Video Container */}
+            <div className="relative bg-black rounded-2xl overflow-hidden shadow-2xl">
+              <video
+                className="w-full h-auto max-h-[80vh] object-contain"
+                controls
+                autoPlay
+                preload="metadata"
+                onError={(e) => {
+                  console.error('Video failed to load:', e);
+                  // Fallback: show error message or placeholder
+                }}
+              >
+                <source src="/digital/video.mp4" type="video/mp4" />
+                <p className="text-white p-8 text-center">
+                  Your browser does not support the video tag. 
+                  <a href="/digital/video.mp4" className="text-blue-400 hover:text-blue-300 underline ml-2">
+                    Download the video instead
+                  </a>
+                </p>
+              </video>
+              
+              {/* Video Overlay Info */}
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                <h3 className="text-white text-xl font-bold mb-2">
+                  OptiValueTek Digital Transformation Demo
+                </h3>
+                <p className="text-gray-300 text-sm">
+                  Discover how we help enterprises modernize their technology stack and accelerate digital transformation
+                </p>
+              </div>
+            </div>
+            
+            {/* Click outside to close */}
+            <div 
+              className="absolute inset-0 -z-10"
+              onClick={closeVideoModal}
+            />
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
