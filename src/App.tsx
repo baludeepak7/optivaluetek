@@ -7,6 +7,7 @@ import Solutions from './components/Solutions';
 import Industries from './components/Industries';
 import CaseStudies from './components/CaseStudies';
 import Insights from './components/Insights';
+import News from './components/News';
 import Culture from './components/Culture';
 import Testimonials from './components/Testimonials';
 import ContactForm from './components/ContactForm';
@@ -95,6 +96,20 @@ const InsightsPage = () => (
   </>
 );
 
+const NewsPage = () => (
+  <>
+    <Helmet>
+      <title>News & Updates | OptiValueTek</title>
+      <meta
+        name="description"
+        content="Stay updated with OptiValueTek's latest press releases, announcements, and social media updates."
+      />
+      <link rel="canonical" href="https://www.optivaluetek.com/news" />
+    </Helmet>
+    <News />
+  </>
+);
+
 const CareersPage = () => (
   <>
     <Helmet>
@@ -148,6 +163,7 @@ function App() {
             <Route path="/solutions" element={<SolutionsPage />} />
             <Route path="/industries" element={<IndustriesPage />} />
             <Route path="/insights" element={<InsightsPage />} />
+            <Route path="/news" element={<NewsPage />} />
             <Route path="/careers" element={<CareersPage />} />
             <Route path="/investor-corner" element={<InvestorCornerPage />} />
             <Route path="/contact" element={<ContactPage />} />

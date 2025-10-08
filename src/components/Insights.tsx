@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowRight, Calendar, FileText, Play, ChevronDown, ChevronUp, ExternalLink } from 'lucide-react';
+import News from './News';
 
 const Insights = () => {
   const [expandedInsight, setExpandedInsight] = useState<number | null>(null);
@@ -80,6 +81,7 @@ const Insights = () => {
   ];
 
   return (
+    <>
     <section id="insights" className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-10">
@@ -241,6 +243,8 @@ const Insights = () => {
         </div>*/}
       </div>
     </section>
+    <News />
+    </>
   );
 };
 
