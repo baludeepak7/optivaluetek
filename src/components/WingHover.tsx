@@ -146,7 +146,7 @@ const WingHover = () => {
     {
       title: 'UAV & Defense Engineering',
       description: 'Tactical drones, ISR systems, anti-drone platforms, field-ready hardware.',
-      icon: <Drone className="w-12 h-12" />
+      icon: <Cpu className="w-12 h-12" />
     },
     {
       title: 'AI & Intelligence Systems',
