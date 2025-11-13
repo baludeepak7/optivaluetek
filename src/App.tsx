@@ -32,6 +32,7 @@ import AboutUs from './components/AboutUs';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsOfService from './components/TermsOfService';
 import Sitemap from './components/Sitemap';
+import WingHover from './components/WingHover';
 
 const HomePage = () => (
   <>
@@ -152,6 +153,20 @@ const ContactPage = () => (
   </>
 );
 
+const WingHoverPage = () => (
+  <>
+    <Helmet>
+      <title>WingHover - UAV & Defense Systems | OptiValueTek</title>
+      <meta
+        name="description"
+        content="Explore WingHover - OptiValueTek's UAV, defense systems, and intelligent automation solutions for mission-critical applications."
+      />
+      <link rel="canonical" href="https://www.optivaluetek.com/winghover" />
+    </Helmet>
+    <WingHover />
+  </>
+);
+
 function App() {
   return (
     <HelmetProvider>
@@ -164,6 +179,7 @@ function App() {
             <Route path="/industries" element={<IndustriesPage />} />
             <Route path="/insights" element={<InsightsPage />} />
             <Route path="/news" element={<NewsPage />} />
+            <Route path="/winghover" element={<WingHoverPage />} />
             <Route path="/careers" element={<CareersPage />} />
             <Route path="/investor-corner" element={<InvestorCornerPage />} />
             <Route path="/contact" element={<ContactPage />} />
